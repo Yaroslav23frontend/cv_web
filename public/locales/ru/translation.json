@@ -1,0 +1,111 @@
+{
+  "auth": {
+    "signIn": {
+      "signIn": "Вход",
+      "submit": "Войти",
+      "signInWithGoogle": "Войти через Google",
+      "forget": "Забыли пароль?",
+      "password": "Пароль",
+      "signUp": "Зарегистрироваться"
+    },
+    "signUp": {
+      "signUp": "Зарегистрироваться",
+      "signIn": "Войти",
+      "submit": "Зарегистрироваться",
+      "signInWithGoogle": "Зарегистрироваться через Google",
+      "confirmPasword": "Подтверждение пароля",
+      "password": "Пароль"
+    },
+    "forget": {
+      "title": "Изменение пароля",
+      "submit": "Изменить",
+      "back": "Назад",
+      "signUp": "Зарегистрироваться",
+      "signIn": "Войти",
+      "confirmPasword": "Подтверждение пароля",
+      "password": "Пароль"
+    },
+    "messages": {
+      "offline": "Пожалуйста, проверьте подключение к интернету",
+      "wrongPassword": "Неправильный пароль",
+      "userNotFound": "Пользователь не найден"
+    }
+  },
+  "settings": {
+    "titles": {
+      "personal": "Личные данные",
+      "colors": "Цвета"
+    },
+    "password": "Пароль",
+    "deleteAccount": "Удалить аккаунт",
+    "deleteAllData": "Удалить все данные",
+    "today": "Сегодня",
+    "overdue": "Просроченые",
+    "upcoming": "Вскоре",
+    "completed": "Выполненые",
+    "upcomingDays": "Вскоре(кол. дней)",
+    "changeEmail": "Сменить email",
+    "lan": {
+      "title": "Язык",
+      "en": "en",
+      "ua": "ua",
+      "ru": "ru"
+    }
+  },
+  "colors": {
+    "black": "черный",
+    "white": "белый",
+    "gray": "серый",
+    "red": "красный",
+    "orange": "оранжевый",
+    "yellow": "желтый",
+    "green": "зеленый",
+    "azure": "лазурный",
+    "navy": "темно-синий",
+    "purple": "фиолетовый",
+    "pink": "розовый",
+    "brown": "коричневый"
+  },
+  "buttons": {
+    "delete": "Удалить",
+    "rename": "Переименовать",
+    "add": "Добавить",
+    "clear": "Очистить",
+    "signOut": "Выход",
+    "cancel": "Отмена",
+    "boards": "Доски",
+    "reset": "Сбросить",
+    "change": "Изменить",
+    "back": "Назад"
+  },
+  "filters": {
+    "filter": "Фильтр",
+    "today": "Сегодня",
+    "overdue": "Просроченые",
+    "upcoming": "Вскоре",
+    "sort": "Сортировать по дате"
+  },
+  "placeholders": {
+    "addCV": "Добавить новое CV",
+    "addItem": "Добавить новое задание",
+    "search": "Поиск"
+  },
+  "messagesModal": {
+    "deleteBoard": "Удалить эту доску?",
+    "deleteAccount": "Вы хотите удалить этот аккаунт?",
+    "deleteAllData": "Вы хотите удалить этот аккаунт?"
+  },
+  "itemsTabs": {
+    "all": "Все",
+    "active": "Активный",
+    "completed": "Завершено"
+  },
+  "messagesItems": {
+    "noTasks": "У вас пока нет задач",
+    "offline": "Пожалуйста, проверьте подключение к интернету"
+  },
+  "messagesCollection": {
+    "noCV": "У вас еще нет резюме",
+    "offline": "Пожалуйста, проверьте подключение к интернету"
+  }
+}

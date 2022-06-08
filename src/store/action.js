@@ -1,0 +1,12 @@
+export const addUser = "ADD_USER";
+export const deleteUser = "DELETE_USER";
+export const addItem = "ADD_ITEM";
+export const addItems = "ADD_ITEMS";
+export const deleteItem = "DELETE_ITEM";
+export const completedItem = "COMPLETED_ITEM";
+export const settings = "SETTINGS";
+export const resetSettings = "RESET_SETTINGS";
+export const addCV = "ADD_CV";
+export const addCVs = "ADD_CVs";
+export const deleteCV = "DELETE_CV";
+export const editItem = "EDIT_ITEM";

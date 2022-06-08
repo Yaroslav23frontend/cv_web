@@ -1,0 +1,112 @@
+{
+  "auth": {
+    "signIn": {
+      "signIn": "Sign in",
+      "submit": "Submit",
+      "signInWithGoogle": "Sign in with Google",
+      "forget": "Forgot password?",
+      "password": "Password",
+      "confirmPasword": "Confirmation Password",
+      "signUp": "Sign up"
+    },
+    "signUp": {
+      "signUp": "Sign up",
+      "signIn": "Sign in",
+      "submit": "Submit",
+      "signInWithGoogle": "Sign up with Google",
+      "password": "Password",
+      "confirmPasword": "Confirmation Password"
+    },
+    "forget": {
+      "title": "Reset the password",
+      "submit": "Submit",
+      "back": "Back",
+      "signUp": "Sign up",
+      "signIn": "Sign in",
+      "password": "Password",
+      "confirmPasword": "Confirmation Password"
+    },
+    "messages": {
+      "offline": "Please check your internet connection",
+      "wrongPassword": "Wrong password",
+      "userNotFound": "User not found"
+    }
+  },
+  "settings": {
+    "titles": {
+      "personal": "Personal",
+      "colors": "Colors"
+    },
+    "password": "Password",
+    "deleteAccount": "Delete account",
+    "deleteAllData": "Delete all data",
+    "today": "Today",
+    "overdue": "Overdue",
+    "upcoming": "Upcoming",
+    "completed": "Completed",
+    "upcomingDays": "Upcoming days",
+    "changeEmail": "Change email",
+    "lan": {
+      "title": "Language",
+      "en": "en",
+      "ua": "ua",
+      "ru": "ru"
+    }
+  },
+  "colors": {
+    "black": "black",
+    "white": "white",
+    "gray": "gray",
+    "red": "red",
+    "orange": "orange",
+    "yellow": "yellow",
+    "green": "green",
+    "azure": "azure",
+    "navy": "navy",
+    "purple": "purple",
+    "pink": "pink",
+    "brown": "brown"
+  },
+  "buttons": {
+    "delete": "Delete",
+    "rename": "Rename",
+    "add": "Add",
+    "clear": "Clear",
+    "signOut": "Sign Out",
+    "cancel": "Cancel",
+    "boards": "Boards",
+    "reset": "Reset",
+    "change": "Change",
+    "back": "Back"
+  },
+  "filters": {
+    "filter": "Filter",
+    "today": "Today",
+    "overdue": "Overdue",
+    "upcoming": "Upcoming",
+    "sort": "Sort by date"
+  },
+  "placeholders": {
+    "addCV": "Add new CV",
+    "addItem": "Add new item",
+    "search": "Search"
+  },
+  "messagesModal": {
+    "deleteBoard": "Do you want delete this board?",
+    "deleteAccount": "Do you want to delete this account?",
+    "deleteAllData": "Do you want to delete all data?"
+  },
+  "itemsTabs": {
+    "all": "All",
+    "active": "Active",
+    "completed": "Completed"
+  },
+  "messagesItems": {
+    "noTasks": "You don't have any tasks yet",
+    "offline": "Please check your internet connection"
+  },
+  "messagesCollection": {
+    "noCV": "You don't have any CV yet",
+    "offline": "Please check your internet connection"
+  }
+}
