@@ -2,9 +2,9 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-console.log(process.env.REACT_APP_FIREBASE_API);
+console.log(process.env.REACT_APP_FIREBASE);
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API,
+  apiKey: process.env.REACT_APP_FIREBASE,
   authDomain: "cv-builder-2868b.firebaseapp.com",
   projectId: "cv-builder-2868b",
   storageBucket: "cv-builder-2868b.appspot.com",

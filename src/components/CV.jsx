@@ -75,7 +75,7 @@ export default function CV({ data }) {
   return (
     <>
       <Box sx={styles.box}>
-        <Button onClick={() => navigate(`../cv/${data}`)} color="inherit">
+        <Button onClick={() => navigate(`../cv/${data}/basic`)} color="inherit">
           {data}
         </Button>
         <Box>

@@ -151,7 +151,7 @@ const styles = {
     maxWidth: "1000px",
     width: "100%",
     minHeight: "400px",
-    height: "100vh",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
