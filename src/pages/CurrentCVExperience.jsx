@@ -9,10 +9,10 @@ import { Typography } from "@mui/material";
 import Description from "../components/exp/description/Description";
 import CustomBox from "../components/CustomBox";
 import Work from "../components/exp/work/Work";
-import LanForm from "../components/exp/LanForm";
 import { useSelector } from "react-redux";
 import Study from "../components/education/Study";
 import Skills from "../components/skills/Skills";
+import Lan from "../components/exp/lan/Lan";
 export default function CurrentCVExperience({ match }) {
   const navigate = useNavigate();
   const [valueNav, setValueNav] = useState("pdf");
@@ -34,20 +34,7 @@ export default function CurrentCVExperience({ match }) {
           <Work />
           <Study />
           <Skills />
-          <Box sx={styles.boxSection}>
-            <Typography
-              variant="h5"
-              component="h2"
-              sx={styles.title}
-              fontWeight="bold"
-            >
-              Language
-            </Typography>
-            <LanForm />
-            <Button variant="contained" sx={styles.buttonAdd}>
-              Add
-            </Button>
-          </Box>
+          <Lan />
         </Box>
       </CustomBox>
       <Button sx={styles.next} onClick={() => {}}>

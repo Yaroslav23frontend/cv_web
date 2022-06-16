@@ -4,17 +4,24 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-export default function LanItem() {
+import { useDispatch } from "react-redux";
+import { deleteCVlan } from "../../../store/action";
+export default function LanItem({ data }) {
+  const dispatch = useDispatch();
+  function Delete() {
+    dispatch({ type: deleteCVlan, payload: data.id });
+  }
   return (
     <Paper sx={styles.paper}>
       <Box sx={styles.boxDescription}>
-        <Typography>English</Typography>
+        <Typography>{data.lan}</Typography>
       </Box>
+      <Typography>{data.level}</Typography>
       <Box sx={styles.boxButtons}>
         <IconButton>
           <EditIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={Delete}>
           <DeleteIcon />
         </IconButton>
       </Box>

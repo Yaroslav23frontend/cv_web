@@ -8,6 +8,7 @@ import { reducerStudy } from "./reducers/reducerStudy";
 import { reducerUserInfo } from "./reducers/reducerUserInfo";
 import { reducerWork } from "./reducers/reducerWork";
 import { reducerSkills } from "./reducers/reducerSkills";
+import { reducerLan } from "./reducers/reducerLan";
 export const store = configureStore({
   reducer: {
     user: reducerUserInfo,
@@ -19,6 +20,7 @@ export const store = configureStore({
     cvDescription: reducerDescription,
     cvStudy: reducerStudy,
     cvSkills: reducerSkills,
+    cvLan: reducerLan,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

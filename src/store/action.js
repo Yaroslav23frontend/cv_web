@@ -21,3 +21,5 @@ export const addCVstudy = "ADD_CV_STUDY";
 export const deleteCVstudy = "DELETE_CV_STUDY";
 export const addCVskills = "ADD_CV_SKILLS";
 export const deleteCVskills = "DELTE_CV_SKILLS";
+export const addCVlan = "ADD_CV_LAN";
+export const deleteCVlan = "DELETE_CV_LAN";
