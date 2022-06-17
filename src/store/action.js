@@ -27,3 +27,4 @@ export const deleteCVskills = "DELTE_CV_SKILLS";
 export const addCVlan = "ADD_CV_LAN";
 export const deleteCVlan = "DELETE_CV_LAN";
 export const editCVlan = "EDIT_CV_LAN";
+export const changeCVbg = "CHANGE_CV_BG";

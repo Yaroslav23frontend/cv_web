@@ -18,10 +18,12 @@ import { useNavigate } from "react-router-dom";
 import { PDFViewer, StyleSheet } from "@react-pdf/renderer";
 import PDFdoc from "../components/PDFdoc";
 import CVTabs from "../components/CVTabs";
+import CVcolor from "../components/CVcolor";
 export default function CurrentCVpdf({ match }) {
   const navigate = useNavigate();
   //   const data = useSelector((state) => state.cvBasicInfo);
   const data = useSelector((state) => state);
+  const bg = useSelector((state) => state.cvBg);
   const [valueNav, setValueNav] = useState("pdf");
   function handleChangeIndexNav(event, index) {
     console.log(index);
@@ -40,12 +42,10 @@ export default function CurrentCVpdf({ match }) {
   return (
     <Container>
       <CVTabs active="pdf" />
+      <CVcolor />
       <PDFViewer style={pdfStyles.PDFViewer}>
-        <PDFdoc data={data} />
+        <PDFdoc data={data} bg={bg} />
       </PDFViewer>
-      <Button sx={styles.next} onClick={() => {}}>
-        Next
-      </Button>
     </Container>
   );
 }
