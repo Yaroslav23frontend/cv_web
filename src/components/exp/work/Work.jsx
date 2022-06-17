@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import WorkForm from "./WorkForm";
+import WorkForm from "./form/WorkForm";
 import { useSelector } from "react-redux";
 import WorkItem from "./WorkItem";
 import Button from "@mui/material/Button";
@@ -18,8 +18,8 @@ export default function Work() {
       </Typography>
       {data.length !== 0 ? (
         <>
-          {data?.map((el) => (
-            <WorkItem key={`work-${el.id}`} data={el} />
+          {data?.map((el, id) => (
+            <WorkItem key={`work-${el.id}`} data={el} id={id} />
           ))}
         </>
       ) : (

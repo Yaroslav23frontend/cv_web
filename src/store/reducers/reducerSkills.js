@@ -1,4 +1,4 @@
-import { addCVskills, deleteCVskills } from "../action";
+import { addCVskills, deleteCVskills, editCVskills } from "../action";
 export function reducerSkills(state = [], action) {
   switch (action.type) {
     case addCVskills:
@@ -9,6 +9,10 @@ export function reducerSkills(state = [], action) {
           id: action.payload.id,
         },
       ];
+    case editCVskills:
+      const data = JSON.parse(JSON.stringify(state));
+      data[action.payload.id] = action.payload.data;
+      return data;
     case deleteCVskills:
       return [...state.filter((el) => el.id !== action.payload)];
     default:

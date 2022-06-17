@@ -1,4 +1,4 @@
-import { addCVWorkExp, deleteCVWorkExp } from "../action";
+import { addCVWorkExp, deleteCVWorkExp, editCVWorkExp } from "../action";
 export function reducerWork(state = [], action) {
   switch (action.type) {
     case addCVWorkExp:
@@ -14,6 +14,10 @@ export function reducerWork(state = [], action) {
           id: action.payload.id,
         },
       ];
+    case editCVWorkExp:
+      const data = JSON.parse(JSON.stringify(state));
+      data[action.payload.id] = action.payload.data;
+      return data;
     case deleteCVWorkExp:
       return [...state.filter((el) => el.id !== action.payload)];
     default:

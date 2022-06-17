@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
-import DescriptionForm from "./DescriptionForm";
+import DescriptionForm from "./form/DescriptionForm";
 import DescriptionItem from "./DescriptionItem";
 export default function Description() {
   return (

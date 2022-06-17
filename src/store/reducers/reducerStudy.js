@@ -1,4 +1,4 @@
-import { addCVstudy, deleteCVstudy } from "../action";
+import { addCVstudy, deleteCVstudy, editCVstudy } from "../action";
 export function reducerStudy(state = [], action) {
   switch (action.type) {
     case addCVstudy:
@@ -14,6 +14,10 @@ export function reducerStudy(state = [], action) {
           id: action.payload.id,
         },
       ];
+    case editCVstudy:
+      const data = JSON.parse(JSON.stringify(state));
+      data[action.payload.id] = action.payload.data;
+      return data;
     case deleteCVstudy:
       return [...state.filter((el) => el.id !== action.payload)];
     default:

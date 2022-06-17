@@ -6,11 +6,33 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { date } from "yup";
-import { deleteCVWorkExp } from "../../../store/action";
-export default function WorkItem({ data }) {
+import { deleteCVWorkExp, editCVWorkExp } from "../../../store/action";
+import { useState } from "react";
+import ModalWork from "./ModalWork";
+export default function WorkItem({ data, id }) {
   const dispatch = useDispatch();
   function Delete() {
     dispatch({ type: deleteCVWorkExp, payload: data.id });
+  }
+  const [modalEdit, setModalEdit] = useState(false);
+  function closeModalEdit() {
+    setModalEdit(false);
+  }
+  function saveDataModal(valuse) {
+    saveData(valuse);
+    closeModalEdit();
+  }
+  function saveData(values) {
+    dispatch({
+      type: editCVWorkExp,
+      payload: {
+        data: { ...values, id: data.id },
+        id: id,
+      },
+    });
+  }
+  function openEditModal() {
+    setModalEdit(true);
   }
   return (
     <>
@@ -56,13 +78,20 @@ export default function WorkItem({ data }) {
         )}
 
         <Box sx={styles.boxButtons}>
-          <IconButton>
+          <IconButton onClick={openEditModal}>
             <EditIcon />
           </IconButton>
           <IconButton onClick={Delete}>
             <DeleteIcon />
           </IconButton>
         </Box>
+        <ModalWork
+          open={modalEdit}
+          handleConfirm={saveDataModal}
+          handleCancele={closeModalEdit}
+          data={data}
+          title={"Edit work Experience"}
+        />
       </Paper>
     </>
   );

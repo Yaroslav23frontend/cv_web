@@ -6,9 +6,25 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useSelector, useDispatch } from "react-redux";
 import { addCVdescription } from "../../../store/action";
+import ModalDescription from "./ModalDescription";
+import { useState } from "react";
 export default function DescriptionItem() {
   const data = useSelector((state) => state.cvDescription);
   const dispatch = useDispatch();
+  const [modalAdd, setModalAdd] = useState(false);
+  function closeModalAdd() {
+    setModalAdd(false);
+  }
+  function saveDataModal(valuse) {
+    saveData(valuse);
+    closeModalAdd();
+  }
+  function saveData(values) {
+    dispatch({ type: addCVdescription, payload: values.description });
+  }
+  function openAddModal() {
+    setModalAdd(true);
+  }
   if (data !== "") {
     return (
       <Paper sx={styles.paper}>
@@ -17,7 +33,7 @@ export default function DescriptionItem() {
           <Typography>{data}</Typography>
         </Box>
         <Box sx={styles.boxButtons}>
-          <IconButton>
+          <IconButton onClick={openAddModal}>
             <EditIcon />
           </IconButton>
           <IconButton
@@ -28,6 +44,12 @@ export default function DescriptionItem() {
             <DeleteIcon />
           </IconButton>
         </Box>
+        <ModalDescription
+          open={modalAdd}
+          handleConfirm={saveDataModal}
+          handleCancele={closeModalAdd}
+          data={data}
+        />
       </Paper>
     );
   }

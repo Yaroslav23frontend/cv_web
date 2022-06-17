@@ -1,5 +1,5 @@
 import LanItem from "./LanItem";
-import LanForm from "./LanForm";
+import LanForm from "./form/LanForm";
 import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,8 +15,8 @@ export default function Lan() {
       >
         Language
       </Typography>
-      {data?.map((el) => (
-        <LanItem key={`lan-${el.id}`} data={el} />
+      {data?.map((el, id) => (
+        <LanItem key={`lan-${el.id}`} data={el} id={id} />
       ))}
       <LanForm />
     </Box>

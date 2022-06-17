@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import StudyItem from "./StudyItem";
-import StudyForm from "./StudyForm";
+import StudyForm from "./form/StudyForm";
 import { useSelector } from "react-redux";
 export default function Study() {
   const data = useSelector((state) => state.cvStudy);
@@ -15,8 +15,8 @@ export default function Study() {
       >
         Education
       </Typography>
-      {data?.map((el) => (
-        <StudyItem key={`study-${el.id}`} data={el} />
+      {data?.map((el, id) => (
+        <StudyItem key={`study-${el.id}`} data={el} id={id} />
       ))}
       <StudyForm />
     </Box>

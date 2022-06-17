@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import SkillItem from "./SkillItem";
-import SkillsForm from "./SkillsForm";
+import SkillsForm from "./form/SkillsForm";
 export default function Skills() {
   const data = useSelector((state) => state.cvSkills);
   return (
@@ -15,8 +15,8 @@ export default function Skills() {
       >
         Skills
       </Typography>
-      {data?.map((el) => (
-        <SkillItem key={`skill-${el.id}`} data={el} />
+      {data?.map((el, id) => (
+        <SkillItem key={`skill-${el.id}`} data={el} id={id} />
       ))}
       <SkillsForm />
     </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@mui/material/Button";
@@ -8,7 +8,9 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { addCVskills } from "../../store/action";
+import { addCVskills } from "../../../store/action";
+import Form from "./Form";
+import ModalSkills from "../ModalSkills";
 const validationSchema = yup.object({
   skill: yup
     .string("Entre Skill")
@@ -21,42 +23,40 @@ export default function SkillsForm({ func }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      skill: "",
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      dispatch({ type: addCVskills, payload: { ...values, id: 0 } });
-      values.skill = "";
-    },
-  });
+  const [modalAdd, setModalAdd] = useState(false);
+  function closeModalAdd() {
+    setModalAdd(false);
+  }
+  function saveDataModal(valuse) {
+    saveData(valuse);
+    closeModalAdd();
+  }
+  function saveData(values) {
+    dispatch({
+      type: addCVskills,
+      payload: {
+        ...values,
+        id: data.length === 0 ? 0 : data[data.length - 1].id + 1,
+      },
+    });
+  }
+  function openAddModal() {
+    setModalAdd(true);
+  }
   return (
     <Box sx={styles.inputBox}>
       {data.length === 0 ? (
-        <>
-          <TextField
-            fullWidth
-            id="skill"
-            name="skill"
-            label="Skill"
-            value={formik.values.skill}
-            onChange={formik.handleChange}
-            error={formik.touched.skill && Boolean(formik.errors.skill)}
-            helperText={formik.touched.skill && formik.errors.skill}
-          />
-
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={formik.handleSubmit}
-          >
-            Save
-          </Button>
-        </>
+        <Form func={saveData} />
       ) : (
-        <Button>Add</Button>
+        <Button variant="contained" onClick={openAddModal}>
+          Add
+        </Button>
       )}
+      <ModalSkills
+        open={modalAdd}
+        handleConfirm={saveDataModal}
+        handleCancele={closeModalAdd}
+      />
     </Box>
   );
 }
