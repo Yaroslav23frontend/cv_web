@@ -76,7 +76,9 @@
     "boards": "Доски",
     "reset": "Сбросить",
     "change": "Изменить",
-    "back": "Назад"
+    "back": "Назад",
+    "next": "Далее",
+    "uploadPhoto": "Загрузить фото"
   },
   "filters": {
     "filter": "Фильтр",
@@ -107,5 +109,54 @@
   "messagesCollection": {
     "noCV": "У вас еще нет резюме",
     "offline": "Пожалуйста, проверьте подключение к интернету"
+  },
+  "cvSection": {
+    "personal": "Персональные",
+    "exp": "Опыт",
+    "pdf": "PDF"
+  },
+  "cvPersonal": {
+    "name": "Имя",
+    "lastName": "Фамилия",
+    "email": "Email",
+    "tel": "Номер телефона",
+    "city": "Город",
+    "address": "Адрес",
+    "zip": "Почтовый индекс",
+    "linkedIn": "LinkedIn",
+    "skype": "Skype(invite link)"
+  },
+  "work_exp_section": {
+    "h": "Опыт работы",
+    "title": "Должность",
+    "city": "Город",
+    "company": "Компания",
+    "start_date": "Дата начала работы",
+    "end_date": "Дата окньчания работы",
+    "description": "Описание"
+  },
+  "study_section": {
+    "h": "Образование и дипломы/сертификаты",
+    "studies": "Специальность",
+    "location": "Город",
+    "insitution": "Учебное заведение",
+    "start_date": "Дата начала обучения",
+    "end_date": "Дата окончания обучения",
+    "description": "Описание"
+  },
+  "skills": {
+    "h": "Навыки",
+    "skill": "Skill"
+  },
+  "description": "Описание",
+  "languages_section": {
+    "h": "Языки",
+    "native": "Родной",
+    "pre": "Ниже среднего",
+    "inter": "Средний уровень",
+    "upper": "Выше среднего уровень",
+    "adv": "Продвинутый уровень",
+    "pro": "Профессиональный уровень",
+    "basic": "Базовый уровень"
   }
 }

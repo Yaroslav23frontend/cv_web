@@ -77,7 +77,9 @@
     "boards": "Boards",
     "reset": "Reset",
     "change": "Change",
-    "back": "Back"
+    "back": "Back",
+    "next": "Next",
+    "uploadPhoto": "Upload photo"
   },
   "filters": {
     "filter": "Filter",
@@ -108,5 +110,56 @@
   "messagesCollection": {
     "noCV": "You don't have any CV yet",
     "offline": "Please check your internet connection"
+  },
+  "cvSection": {
+    "personal": "Personal",
+    "exp": "Experience",
+    "pdf": "PDF"
+  },
+  "cvPersonal": {
+    "name": "Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "tel": "Phone",
+    "city": "City",
+    "address": "Address",
+    "zip": "ZIP",
+    "linkedIn": "LinkedIn",
+    "skype": "Skype(invite link)"
+  },
+  "description_section": "Description",
+  "work_exp_section": {
+    "h": "Work Experience",
+    "title": "Title/Position",
+    "city": "City/Town",
+    "company": "Company",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "description": "Description"
+  },
+  "study_section": {
+    "h": "Studies and certificates",
+    "studies": "Studies",
+    "location": "Location",
+    "insitution": "Institution/Center",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "description": "Description"
+  },
+
+  "skills": {
+    "h": "Skills",
+    "skill": "Skill"
+  },
+
+  "languages_section": {
+    "lan": "Language",
+    "native": "Native",
+    "pre": "Pre-intermediate",
+    "inter": "Intermediate",
+    "upper": "Upper-intermediate",
+    "adv": "Advanced",
+    "pro": "Proficient",
+    "basic": "Beginner"
   }
 }

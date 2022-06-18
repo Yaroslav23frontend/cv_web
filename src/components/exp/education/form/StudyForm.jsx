@@ -8,21 +8,17 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { addCVskills } from "../../../store/action";
+import { addCVstudy } from "../../../../store/action";
 import Form from "./Form";
-import ModalSkills from "../ModalSkills";
-const validationSchema = yup.object({
-  skill: yup
-    .string("Entre Skill")
-    .max(100, "Max length 100 symbols")
-    .required("Enter Skill"),
-});
+import ModalStudy from "../ModalStudy";
+import update from "../../../../utilites/update";
+import { useActive } from "../../../../context/ActiveContext";
 
-export default function SkillsForm({ func }) {
-  const data = useSelector((state) => state.cvSkills);
-  const dispatch = useDispatch();
+export default function StudyForm({ func, add, cancel, urlId }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const data = useSelector((state) => state.cvStudy);
+  const user = useSelector((state) => state.user.id);
+  const dispatch = useDispatch();
   const [modalAdd, setModalAdd] = useState(false);
   function closeModalAdd() {
     setModalAdd(false);
@@ -32,13 +28,15 @@ export default function SkillsForm({ func }) {
     closeModalAdd();
   }
   function saveData(values) {
+    const id = data.length === 0 ? 0 : data[data.length - 1].id + 1;
     dispatch({
-      type: addCVskills,
+      type: addCVstudy,
       payload: {
         ...values,
-        id: data.length === 0 ? 0 : data[data.length - 1].id + 1,
+        id: id,
       },
     });
+    update(user, urlId, values, id, data, false, "cvStudy");
   }
   function openAddModal() {
     setModalAdd(true);
@@ -52,7 +50,7 @@ export default function SkillsForm({ func }) {
           Add
         </Button>
       )}
-      <ModalSkills
+      <ModalStudy
         open={modalAdd}
         handleConfirm={saveDataModal}
         handleCancele={closeModalAdd}

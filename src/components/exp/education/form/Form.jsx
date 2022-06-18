@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { addCVstudy } from "../../../store/action";
+
 const validationSchema = yup.object({
   studies: yup
     .string("Entre your title")
@@ -25,7 +23,7 @@ const validationSchema = yup.object({
     .max(150, "Max length 150 symbols")
     .required("Entre insitution"),
   start: yup.date("Enter your task").required("Please choose the date"),
-  end: yup.date("Enter your task").required("Please choose the date"),
+  end: yup.date("Enter your task"),
   description: yup
     .string("Entre your description")
     .max(1000, "Max length 1000 symbols"),
@@ -45,6 +43,7 @@ export default function Form({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cvStudy = useSelector((state) => state.cvStudy);
   const formik = useFormik({
     initialValues: {
       studies: data.studies,

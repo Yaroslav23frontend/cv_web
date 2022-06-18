@@ -4,14 +4,28 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDispatch } from "react-redux";
-import { deleteCVskills, editCVskills } from "../../store/action";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCVskills, editCVskills } from "../../../store/action";
 import { useState } from "react";
 import ModalSkills from "./ModalSkills";
-export default function SkillItem({ data, id }) {
+import update from "../../../utilites/update";
+export default function SkillItem({ data, id, urlId }) {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.id);
+  const cvSkills = useSelector((state) => state.cvSkills);
   function Delete() {
     dispatch({ type: deleteCVskills, payload: data.id });
+    const newData = JSON.parse(JSON.stringify(cvSkills));
+
+    update(
+      user,
+      urlId,
+      [],
+      id,
+      newData.filter((el) => el.id !== data.id),
+      true,
+      "cvSkills"
+    );
   }
   const [modalEdit, setModalEdit] = useState(false);
   function closeModalEdit() {
@@ -29,6 +43,12 @@ export default function SkillItem({ data, id }) {
         id: id,
       },
     });
+    const newData = JSON.parse(JSON.stringify(cvSkills));
+    newData[id] = {
+      ...values,
+      id: data.id,
+    };
+    update(user, urlId, values, id, newData, true, "cvSkills");
   }
   function openEditModal() {
     setModalEdit(true);

@@ -13,6 +13,7 @@ import CustomModal from "./Modal";
 import { useTranslation } from "react-i18next";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useActive } from "../context/ActiveContext";
 export default function CV({ data }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -44,7 +45,6 @@ export default function CV({ data }) {
       console.log("Document data:", docSnap.data());
       await setDoc(doc(db, `${user}`, docName), docSnap.data());
     } else {
-      // doc.data() will be undefined in this case
       console.log("No such document!");
     }
     await setDoc(doc(db, `${user}-collection`, "collection"), {
@@ -71,11 +71,18 @@ export default function CV({ data }) {
       alignItems: "center",
     },
   };
-
+  const { setActive } = useActive();
   return (
     <>
       <Box sx={styles.box}>
-        <Button onClick={() => navigate(`../cv/${data}/basic`)} color="inherit">
+        <Button
+          onClick={() => {
+            setActive(data);
+            sessionStorage.setItem("cv", data);
+            navigate(`../cv/${data}`);
+          }}
+          color="inherit"
+        >
           {data}
         </Button>
         <Box>

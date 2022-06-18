@@ -4,17 +4,33 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDispatch } from "react-redux";
-import { deleteCVstudy, editCVstudy } from "../../store/action";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCVstudy, editCVstudy } from "../../../store/action";
 import ModalStudy from "./ModalStudy";
-import { useState } from "react";
-export default function StudyItem({ data, id }) {
+import { useEffect, useState } from "react";
+import { useActive } from "../../../context/ActiveContext";
+import update from "../../../utilites/update";
+import date from "../../../utilites/date";
+export default function StudyItem({ data, id, urlId }) {
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.id);
+  const cvStudy = useSelector((state) => state.cvStudy);
+  const { active } = useActive();
+  const [modalEdit, setModalEdit] = useState(false);
   function Delete() {
     dispatch({ type: deleteCVstudy, payload: data.id });
+    const newData = JSON.parse(JSON.stringify(cvStudy));
+    update(
+      user,
+      urlId,
+      [],
+      id,
+      newData.filter((el) => el.id !== data.id),
+      true,
+      "cvStudy"
+    );
   }
-
-  const [modalEdit, setModalEdit] = useState(false);
   function closeModalEdit() {
     setModalEdit(false);
   }
@@ -30,6 +46,12 @@ export default function StudyItem({ data, id }) {
         id: id,
       },
     });
+    const newData = JSON.parse(JSON.stringify(cvStudy));
+    newData[id] = {
+      ...values,
+      id: data.id,
+    };
+    update(user, urlId, values, id, newData, true, "cvStudy");
   }
   function openEditModal() {
     setModalEdit(true);
@@ -65,7 +87,9 @@ export default function StudyItem({ data, id }) {
             </Box>
           </Box>
           <Typography>
-            {data.start}-{data.end}
+            {`${data.stringStart} ${
+              data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
+            }`}
           </Typography>
         </Box>
         {data.description !== "" ? (

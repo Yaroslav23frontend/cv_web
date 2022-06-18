@@ -12,9 +12,7 @@ import Settings from "../pages/Settings";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import UserDeleted from "../pages/UserDeleted";
-import CurrentCVBasic from "../pages/CurrentCVBasic";
-import CurrentCVpdf from "../pages/CurrentCVPDF";
-import CurrentCVExperience from "../pages/CurrentCVExperience";
+import CurrentCV from "../pages/CurrentCV";
 
 export default function AppRouter() {
   const { isAuth } = useAuth();
@@ -27,9 +25,7 @@ export default function AppRouter() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/resetEmail" element={<ResetEmail />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
-          <Route exact path="/cv/:id/basic" element={<CurrentCVBasic />} />
-          <Route exact path="/cv/:id/pdf" element={<CurrentCVpdf />} />
-          <Route exact path="/cv/:id/exp" element={<CurrentCVExperience />} />
+          <Route exact path="/cv/:id" element={<CurrentCV />} />
           <Route path="" element={<Navigate to="/cv" />} />
         </>
       ) : (

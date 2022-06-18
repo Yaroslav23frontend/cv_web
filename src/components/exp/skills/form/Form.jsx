@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";
-import { addCVskills } from "../../../store/action";
+import { addCVskills } from "../../../../store/action";
 const validationSchema = yup.object({
   skill: yup
     .string("Entre Skill")

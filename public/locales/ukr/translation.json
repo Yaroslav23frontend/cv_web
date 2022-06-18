@@ -76,7 +76,9 @@
     "boards": "Дошки",
     "reset": "Скинути",
     "change": "Змінити",
-    "back": "Назад"
+    "back": "Назад",
+    "next": "Далі",
+    "uploadPhoto": "Завантажити фото"
   },
   "filters": {
     "filter": "Фільтр",
@@ -107,5 +109,58 @@
   "messagesCollection": {
     "noCV": "У вас ще немає жодного CV",
     "offline": "Будь ласка, перевірте підключення до Інтернету"
+  },
+  "cvSection": {
+    "personal": "Персональні",
+    "exp": "Досвід",
+    "pdf": "PDF"
+  },
+  "cvPersonal": {
+    "name": "Ім'я",
+    "lastName": "Прізвище",
+    "email": "Email",
+    "tel": "Номер телефону",
+    "city": "Місто",
+    "address": "Адреса",
+    "zip": "Поштовий індекс",
+    "linkedIn": "LinkedIn",
+    "skype": "Skype(invite link)"
+  },
+  "exp_section": {
+    "experience": "Досвід",
+    "profile": {
+      "profile": "Профіль",
+      "description": "Опис"
+    }
+  },
+  "work_exp_section": {
+    "h": "Досвід роботи",
+    "title": "Посада",
+    "city": "Місто",
+    "company": "Компанія",
+    "start_date": "Дата початку роботи",
+    "end_date": "Дата закінчення роботи",
+    "description": "Опис"
+  },
+  "study_section": {
+    "h": "Освіта та дипломи/сертифікати",
+    "studies": "Спеціальність",
+    "location": "Місто",
+    "insitution": "Навчальний заклад",
+    "start_date": "Дата початку навчання",
+    "end_date": "Дата закінчення навчання",
+    "description": "Опис"
+  },
+  "skills": "Навички",
+
+  "languages_section": {
+    "h": "Мови",
+    "native": "Рідний",
+    "pre": "Нижче середнього",
+    "inter": "Середній рівень",
+    "upper": "Вище за середній рівень",
+    "adv": "Просунутий рівень",
+    "pro": "Професійний рівень",
+    "basic": "Базовий рівень"
   }
 }

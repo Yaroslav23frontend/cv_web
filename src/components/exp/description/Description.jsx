@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import DescriptionForm from "./form/DescriptionForm";
 import DescriptionItem from "./DescriptionItem";
-export default function Description() {
+export default function Description({ urlId }) {
   return (
     <Box sx={styles.box}>
       <Typography
@@ -14,8 +14,8 @@ export default function Description() {
       >
         Description
       </Typography>
-      <DescriptionItem />
-      <DescriptionForm />
+      <DescriptionItem urlId={urlId} />
+      <DescriptionForm urlId={urlId} />
     </Box>
   );
 }

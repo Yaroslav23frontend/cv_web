@@ -58,9 +58,11 @@ export default function PDFdoc({ data, bg }) {
     p: {
       fontFamily: "Liberation Sans",
       fontSize: "12px",
-      textJustify: "inter-character",
       position: "relative",
       lineHeight: "1.55px",
+      padding: 0,
+      marginLeft: 0,
+      textIndent: "0.01px",
     },
     personalP: {
       fontFamily: "Liberation Sans",
@@ -132,7 +134,7 @@ export default function PDFdoc({ data, bg }) {
             });
             console.log(check);
             if (check !== -1) {
-              return <Text style={styles.h2}>{t("cv.personal")}</Text>;
+              return <Text style={styles.h2}>{t("cvSection.personal")}</Text>;
             }
           })}
 
@@ -141,7 +143,7 @@ export default function PDFdoc({ data, bg }) {
               return (
                 <View style={styles.personalInfoMargin}>
                   <Text style={[styles.personalP, styles.span]}>
-                    {t("personal.name")}
+                    {t("cvPersonal.name")}
                   </Text>
                   <Text style={styles.personalP}>{basicInfo.name}</Text>
                 </View>
@@ -153,7 +155,7 @@ export default function PDFdoc({ data, bg }) {
               return (
                 <View style={styles.personalInfoMargin}>
                   <Text style={[styles.personalP, styles.span]}>
-                    {t("personal.lastName")}
+                    {t("cvPersonal.lastName")}
                   </Text>
                   <Text style={styles.personalP}>{basicInfo.lastName}</Text>
                 </View>
@@ -188,7 +190,7 @@ export default function PDFdoc({ data, bg }) {
                 <div key={`city-${Date.now()}`}>
                   <View style={styles.personalInfoMargin}>
                     <Text style={[styles.personalP, styles.span]}>
-                      {t("personal.city")}
+                      {t("cvPersonal.city")}
                     </Text>
                     <Text style={[styles.personalP]}>
                       {data.cvBasicInfo.city}
@@ -204,7 +206,7 @@ export default function PDFdoc({ data, bg }) {
                 <div key={`address-${Date.now()}`}>
                   <View style={styles.personalInfoMargin}>
                     <Text style={[styles.personalP, styles.span]}>
-                      {t("personal.address")}
+                      {t("cvPersonal.address")}
                     </Text>
                     <Text style={[styles.personalP]}>
                       {data.cvBasicInfo.address}
@@ -220,7 +222,7 @@ export default function PDFdoc({ data, bg }) {
                 <div key={`postal-${Date.now()}`}>
                   <View style={styles.personalInfoMargin}>
                     <Text style={[styles.personalP, styles.span]}>
-                      {t("personal.zip")}
+                      {t("cvPersonal.zip")}
                     </Text>
                     <Text style={[styles.personalP]}>
                       {data.cvBasicInfo.zip}
@@ -232,9 +234,8 @@ export default function PDFdoc({ data, bg }) {
           })}
 
           <View style={styles.personalInfoMargin}>
-            {[data.cvBasicInfo].map((el) => {
-              const check = Object.values(el).indexOf((el) => el.length > 0);
-              if (check !== -1) {
+            {[data.cvSkills].map((el) => {
+              if (el.length >= 1) {
                 return (
                   <Svg
                     style={{
@@ -257,7 +258,7 @@ export default function PDFdoc({ data, bg }) {
             })}
             {[data.cvSkills].map((el) => {
               if (el.length >= 1) {
-                return <Text style={styles.h2}>{t("cv.skills")}</Text>;
+                return <Text style={styles.h2}>{t("skills.h")}</Text>;
               }
             })}
 
@@ -290,10 +291,12 @@ export default function PDFdoc({ data, bg }) {
                           stroke="rgb(255,255,255)"
                         />
                       </Svg>
-                      <Text style={styles.h2}>{t("cv.lan")}</Text>
+                      <Text style={styles.h2}>
+                        {t("languages_section.lan")}
+                      </Text>
                     </View>
                     <Text style={[styles.personalP, styles.span]}>
-                      {el.language}
+                      {el.lan}
                     </Text>
                     <Text style={styles.personalP}>{el.level}</Text>
                   </View>
@@ -421,7 +424,7 @@ export default function PDFdoc({ data, bg }) {
           {[data.cvStudy].map((el, id) => {
             if (el.length !== 0) {
               return (
-                <View key={`study-${Date.now()}`}>
+                <View key={`study-${id}`}>
                   <Svg
                     style={{
                       margin: "20px 0",
@@ -439,7 +442,7 @@ export default function PDFdoc({ data, bg }) {
                     />
                   </Svg>
                   <Text style={[styles.h2, styles.mainH2]}>
-                    {t("cv.study")}
+                    {t("study_section.h")}
                   </Text>
                 </View>
               );
@@ -447,25 +450,22 @@ export default function PDFdoc({ data, bg }) {
           })}
           {data.cvStudy.map((el) => {
             return (
-              <View key={`study-item-${Date.now()}`}>
+              <>
                 <Text
                   style={[styles.p, styles.span]}
-                >{`${el.institution}, ${el.location}`}</Text>
-                <Text style={styles.p}> {el.study}</Text>
-                <Text style={styles.p}>
-                  {" "}
-                  {`${el.startDate} - ${el.endDate}`}
-                </Text>
-                <Text style={styles.p}>
-                  <View style={{ padding: "30px" }}>{el.description}</View>
-                </Text>
-              </View>
+                >{`${el.insitution}, ${el.location}`}</Text>
+                <Text style={styles.p}>{el.studies}</Text>
+                <Text style={styles.p}>{`${el.stringStart} ${
+                  el.stringEnd !== "" ? `- ${el.stringEnd}` : ""
+                }`}</Text>
+                <Text style={styles.p}>{el.description}</Text>
+              </>
             );
           })}
           {[data.cvWork].map((el, id) => {
             if (el.length !== 0) {
               return (
-                <View key={`work-${el.id}`}>
+                <View key={`work-${id}`}>
                   <Svg
                     style={{
                       margin: "20px 0",
@@ -482,7 +482,9 @@ export default function PDFdoc({ data, bg }) {
                       stroke="grey"
                     />
                   </Svg>
-                  <Text style={[styles.h2, styles.mainH2]}>{t("cv.exp")}</Text>
+                  <Text style={[styles.h2, styles.mainH2]}>
+                    {t("work_exp_section.h")}
+                  </Text>
                 </View>
               );
             }
@@ -490,10 +492,12 @@ export default function PDFdoc({ data, bg }) {
           {data.cvWork.map((el) => {
             return (
               <View key={`work-item-${el.id}`}>
-                <Text style={[styles.p, styles.span]}> {el.title}</Text>
-                <Text style={styles.p}> {el.city}</Text>
-                <Text style={styles.p}> {el.company}</Text>
-                <Text style={styles.p}>Start date: {el.endDate}</Text>
+                <Text style={[styles.p, styles.span]}>{el.title}</Text>
+                <Text style={styles.p}>{el.city}</Text>
+                <Text style={styles.p}>{el.company}</Text>
+                <Text style={styles.p}>{`${el.stringStart} ${
+                  el.stringEnd !== "" ? `- ${el.stringEnd}` : ""
+                }`}</Text>
                 <Text style={styles.p}>{el.description}</Text>
               </View>
             );

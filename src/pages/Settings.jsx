@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
-import { useSettings } from "../context/SettingsContext";
-import SettingsItemsColors from "../components/SettingsItemsColors";
 import Paper from "@mui/material/Paper";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";

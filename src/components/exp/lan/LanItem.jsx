@@ -4,16 +4,30 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteCVlan, editCVlan } from "../../../store/action";
 import ModalLan from "./ModalLan";
 import { useState } from "react";
-export default function LanItem({ data, id }) {
+import update from "../../../utilites/update";
+export default function LanItem({ data, id, urlId }) {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.id);
+  const cvLan = useSelector((state) => state.cvLan);
   function Delete() {
     dispatch({ type: deleteCVlan, payload: data.id });
+    const newData = JSON.parse(JSON.stringify(cvLan));
+    update(
+      user,
+      urlId,
+      [],
+      id,
+      newData.filter((el) => el.id !== data.id),
+      true,
+      "cvLan"
+    );
   }
   const [modalEdit, setModalEdit] = useState(false);
+
   function closeModalEdit() {
     setModalEdit(false);
   }
@@ -29,6 +43,12 @@ export default function LanItem({ data, id }) {
         id: id,
       },
     });
+    const newData = JSON.parse(JSON.stringify(cvLan));
+    newData[id] = {
+      ...values,
+      id: data.id,
+    };
+    update(user, urlId, values, id, newData, true, "cvLan");
   }
   function openEditModal() {
     setModalEdit(true);

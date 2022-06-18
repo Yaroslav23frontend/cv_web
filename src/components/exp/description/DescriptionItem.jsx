@@ -8,10 +8,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCVdescription } from "../../../store/action";
 import ModalDescription from "./ModalDescription";
 import { useState } from "react";
-export default function DescriptionItem() {
+import update from "../../../utilites/update";
+export default function DescriptionItem({ urlId }) {
   const data = useSelector((state) => state.cvDescription);
+  const user = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
   const [modalAdd, setModalAdd] = useState(false);
+  function Delete() {
+    dispatch({ type: addCVdescription, payload: "" });
+    update(user, urlId, "", "", "", true, "cvDescription");
+  }
   function closeModalAdd() {
     setModalAdd(false);
   }
@@ -21,6 +27,7 @@ export default function DescriptionItem() {
   }
   function saveData(values) {
     dispatch({ type: addCVdescription, payload: values.description });
+    update(user, urlId, "", "", values.description, true, "cvDescription");
   }
   function openAddModal() {
     setModalAdd(true);
@@ -36,11 +43,7 @@ export default function DescriptionItem() {
           <IconButton onClick={openAddModal}>
             <EditIcon />
           </IconButton>
-          <IconButton
-            onClick={() => {
-              dispatch({ type: addCVdescription, payload: "" });
-            }}
-          >
+          <IconButton onClick={Delete}>
             <DeleteIcon />
           </IconButton>
         </Box>

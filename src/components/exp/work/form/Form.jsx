@@ -21,7 +21,7 @@ const validationSchema = yup.object({
       "The city name is invalid"
     ),
   start: yup.date("Enter your task").required("Please choose the date"),
-  end: yup.date("Enter your task").required("Please choose the date"),
+  end: yup.date("Enter your task"),
   description: yup
     .string("Entre your description")
     .max(1000, "Max length 1000 symbols"),

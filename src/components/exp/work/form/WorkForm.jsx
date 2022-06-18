@@ -11,11 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCVWorkExp } from "../../../../store/action";
 import ModalWork from "../ModalWork";
 import Form from "./Form";
-export default function WorkForm() {
+import update from "../../../../utilites/update";
+export default function WorkForm({ urlId }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cvWork);
+  const user = useSelector((state) => state.user.id);
   const [modalAdd, setModalAdd] = useState(false);
   function closeModalAdd() {
     setModalAdd(false);
@@ -24,14 +26,18 @@ export default function WorkForm() {
     saveData(valuse);
     closeModalAdd();
   }
+  console.log(urlId);
   function saveData(values) {
+    const id = data.length === 0 ? 0 : data[data.length - 1].id + 1;
+
     dispatch({
       type: addCVWorkExp,
       payload: {
         ...values,
-        id: data.length === 0 ? 0 : data[data.length - 1].id + 1,
+        id: id,
       },
     });
+    update(user, urlId, values, id, data, false, "cvWork");
   }
   return (
     <>

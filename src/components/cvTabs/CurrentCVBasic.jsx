@@ -1,21 +1,32 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Container from "../components/Container";
-import CustomBox from "../components/CustomBox";
+import CustomBox from "../CustomBox";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Typography from "@mui/material/Typography";
-import ModalAvatar from "../components/ModalAvatar";
+import ModalAvatar from "../ModalAvatar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSelector, useDispatch } from "react-redux";
-import { addCVBasicInfo, uploadPhotoCVBasicInfo } from "../store/action";
+import { addCVBasicInfo, uploadPhotoCVBasicInfo } from "../../store/action";
+import { useTranslation } from "react-i18next";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 import "yup-phone";
-import CVTabs from "../components/CVTabs";
-export default function CurrentCVBasic({ match }) {
+import { useLocation } from "react-router-dom";
+export default function CurrentCVBasic({ id }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cvBasicInfo);
+  const user = useSelector((state) => state.user.id);
+  const location = useLocation();
+  function docName() {
+    const index = location.pathname.indexOf("cv");
+    const lastIndex = location.pathname.lastIndexOf("/");
+    const docName = location.pathname.substring(index + 1);
+    return docName;
+  }
   const validationSchema = yup.object({
     name: yup
       .string("Enter your name")
@@ -61,6 +72,7 @@ export default function CurrentCVBasic({ match }) {
         "The link should be invite to Skype"
       ),
   });
+
   const formik = useFormik({
     initialValues: {
       name: data.name,
@@ -74,11 +86,24 @@ export default function CurrentCVBasic({ match }) {
       skype: data.skype,
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       alert(JSON.stringify(values, null, 2));
       dispatch({
         type: addCVBasicInfo,
         payload: {
+          name: values.name,
+          lastName: values.lastName,
+          email: values.email,
+          tel: values.phone,
+          city: values.city,
+          address: values.address,
+          zip: values.zip,
+          linkedIn: values.linkedIn,
+          skype: values.skype,
+        },
+      });
+      await updateDoc(doc(db, `${user}`, id), {
+        cvBasicInfo: {
           name: values.name,
           lastName: values.lastName,
           email: values.email,
@@ -103,10 +128,9 @@ export default function CurrentCVBasic({ match }) {
     setModalAvatar(false);
   }
   return (
-    <Container>
-      <CVTabs active="basic" />
+    <>
       <Typography variant="h4" component="h1" sx={styles.title}>
-        Basic Info
+        {t("cvSection.personal")}
       </Typography>
 
       <CustomBox>
@@ -128,7 +152,7 @@ export default function CurrentCVBasic({ match }) {
               setModalAvatar(true);
             }}
           >
-            Upload Photo
+            {t("buttons.uploadPhoto")}
           </Button>
           <ModalAvatar
             handleConfirm={confirmModalAvatar}
@@ -139,7 +163,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="name"
             name="name"
-            label="Name"
+            label={t("cvPersonal.name")}
             value={formik.values.name}
             onChange={formik.handleChange}
             error={formik.touched.name && Boolean(formik.errors.name)}
@@ -149,7 +173,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="LastName"
             name="lastName"
-            label="Last Name"
+            label={t("cvPersonal.lastName")}
             value={formik.values.lastName}
             onChange={formik.handleChange}
             error={formik.touched.lastName && Boolean(formik.errors.lastName)}
@@ -159,7 +183,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="email"
             name="email"
-            label="Email"
+            label={t("cvPersonal.email")}
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
@@ -169,7 +193,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="phone"
             name="phone"
-            label="Phone"
+            label={t("cvPersonal.tel")}
             type="tel"
             value={formik.values.phone}
             onChange={formik.handleChange}
@@ -181,7 +205,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="city"
             name="city"
-            label="City"
+            label={t("cvPersonal.city")}
             value={formik.values.city}
             onChange={formik.handleChange}
             error={formik.touched.city && Boolean(formik.errors.city)}
@@ -191,7 +215,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="address"
             name="address"
-            label="Address"
+            label={t("cvPersonal.address")}
             value={formik.values.address}
             onChange={formik.handleChange}
             error={formik.touched.address && Boolean(formik.errors.address)}
@@ -201,7 +225,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="zip"
             name="zip"
-            label="ZIP"
+            label={t("cvPersonal.zip")}
             type="number"
             value={formik.values.zip}
             onChange={formik.handleChange}
@@ -212,7 +236,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="linkedIn"
             name="linkedIn"
-            label="LinkedIn"
+            label={t("cvPersonal.linkedIn")}
             value={formik.values.linkedIn}
             onChange={formik.handleChange}
             error={formik.touched.linkedIn && Boolean(formik.errors.linkedIn)}
@@ -222,7 +246,7 @@ export default function CurrentCVBasic({ match }) {
             fullWidth
             id="skype"
             name="skype"
-            label="Skype(invite link)"
+            label={t("cvPersonal.skype")}
             value={formik.values.skype}
             onChange={formik.handleChange}
             error={formik.touched.skype && Boolean(formik.errors.skype)}
@@ -231,9 +255,9 @@ export default function CurrentCVBasic({ match }) {
         </Box>
       </CustomBox>
       <Button sx={styles.next} onClick={formik.handleSubmit}>
-        Next
+        {t("buttons.next")}
       </Button>
-    </Container>
+    </>
   );
 }
 const styles = {
@@ -241,17 +265,6 @@ const styles = {
     textAlign: "center",
     marginBottom: "20px",
     marginTop: "25px",
-  },
-
-  paper: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    padding: "20px",
-    maxWidth: "400px",
-    padding: "10px",
-    width: "100%",
   },
   inputBox: {
     display: "flex",
@@ -261,59 +274,8 @@ const styles = {
     height: "100%",
     width: "calc(100% - 20px)",
   },
-  button: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  icon: {
-    marginRight: "10px",
-  },
-  linksBox: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "20px",
-    width: "100%",
-  },
-  link: {
-    display: "flex",
-  },
-  error: {
-    fontSize: "12px",
-    color: "red",
-    marginTop: "-15px",
-    marginLeft: "15px",
-    alignSelf: "flex-start",
-  },
-  errorGoogle: {
-    fontSize: "12px",
-    color: "red",
-    marginTop: "-15px",
-  },
-  signUpLink: {
-    justifySelf: "center",
-  },
-  tabs: {
-    width: "100%",
-    maxWidth: "360px",
-    display: "flex",
-    padding: "5px",
-    justifyContent: "center",
-  },
   next: {
     marginTop: 1,
     marginBottom: 1,
-  },
-  boxTabs: {
-    width: "100%",
-    padding: "10px",
-    display: "flex",
-    justifyContent: "center",
-  },
-  boxAvatar: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 1,
   },
 };

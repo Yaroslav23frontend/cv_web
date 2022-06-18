@@ -3,7 +3,7 @@ import LanForm from "./form/LanForm";
 import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-export default function Lan() {
+export default function Lan({ urlId }) {
   const data = useSelector((state) => state.cvLan);
   return (
     <Box sx={styles.box}>
@@ -16,9 +16,9 @@ export default function Lan() {
         Language
       </Typography>
       {data?.map((el, id) => (
-        <LanItem key={`lan-${el.id}`} data={el} id={id} />
+        <LanItem key={`lan-${el.id}`} data={el} id={id} urlId={urlId} />
       ))}
-      <LanForm />
+      <LanForm urlId={urlId} />
     </Box>
   );
 }

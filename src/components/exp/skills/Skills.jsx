@@ -1,10 +1,10 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import StudyItem from "./StudyItem";
-import StudyForm from "./form/StudyForm";
 import { useSelector } from "react-redux";
-export default function Study() {
-  const data = useSelector((state) => state.cvStudy);
+import SkillItem from "./SkillItem";
+import SkillsForm from "./form/SkillsForm";
+export default function Skills({ urlId }) {
+  const data = useSelector((state) => state.cvSkills);
   return (
     <Box sx={styles.box}>
       <Typography
@@ -13,12 +13,12 @@ export default function Study() {
         sx={styles.title}
         fontWeight="bold"
       >
-        Education
+        Skills
       </Typography>
       {data?.map((el, id) => (
-        <StudyItem key={`study-${el.id}`} data={el} id={id} />
+        <SkillItem key={`skill-${el.id}`} data={el} id={id} urlId={urlId} />
       ))}
-      <StudyForm />
+      <SkillsForm urlId={urlId} />
     </Box>
   );
 }

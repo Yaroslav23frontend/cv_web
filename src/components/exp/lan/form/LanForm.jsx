@@ -6,12 +6,13 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addCVlan } from "../../../../store/action";
 import ModalLan from "../ModalLan";
-
-export default function LanForm() {
+import update from "../../../../utilites/update";
+export default function LanForm({ urlId }) {
   const data = useSelector((state) => state.cvLan);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [modalAdd, setModalAdd] = useState(false);
+  const user = useSelector((state) => state.user.id);
   function closeModalAdd() {
     setModalAdd(false);
   }
@@ -20,13 +21,15 @@ export default function LanForm() {
     closeModalAdd();
   }
   function saveData(values) {
+    const id = data.length === 0 ? 0 : data[data.length - 1].id + 1;
     dispatch({
       type: addCVlan,
       payload: {
         ...values,
-        id: data.length === 0 ? 0 : data[data.length - 1].id + 1,
+        id: id,
       },
     });
+    update(user, urlId, values, id, data, false, "cvLan");
   }
   function openAddModal() {
     setModalAdd(true);

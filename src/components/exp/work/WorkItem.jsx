@@ -9,27 +9,50 @@ import { date } from "yup";
 import { deleteCVWorkExp, editCVWorkExp } from "../../../store/action";
 import { useState } from "react";
 import ModalWork from "./ModalWork";
-export default function WorkItem({ data, id }) {
+import update from "../../../utilites/update";
+export default function WorkItem({ data, id, urlId }) {
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.id);
+  const [modalEdit, setModalEdit] = useState(false);
+  const cvWork = useSelector((state) => state.cvWork);
   function Delete() {
     dispatch({ type: deleteCVWorkExp, payload: data.id });
+    const newData = JSON.parse(JSON.stringify(cvWork));
+    update(
+      user,
+      urlId,
+      [],
+      id,
+      newData.filter((el) => el.id !== data.id),
+      true,
+      "cvWork"
+    );
   }
-  const [modalEdit, setModalEdit] = useState(false);
   function closeModalEdit() {
     setModalEdit(false);
   }
-  function saveDataModal(valuse) {
-    saveData(valuse);
+  function saveDataModal(values) {
+    saveData(values);
     closeModalEdit();
   }
   function saveData(values) {
     dispatch({
       type: editCVWorkExp,
       payload: {
-        data: { ...values, id: data.id },
+        data: {
+          ...values,
+          id: data.id,
+        },
         id: id,
       },
     });
+    const newData = JSON.parse(JSON.stringify(cvWork));
+    newData[id] = {
+      ...values,
+      id: data.id,
+    };
+    update(user, urlId, values, id, newData, true, "cvWork");
   }
   function openEditModal() {
     setModalEdit(true);
@@ -65,7 +88,9 @@ export default function WorkItem({ data, id }) {
             </Box>
           </Box>
           <Typography>
-            {data.start}-{data.end}
+            {`${data.stringStart} ${
+              data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
+            }`}
           </Typography>
         </Box>
         {data.description !== "" ? (

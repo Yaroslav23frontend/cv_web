@@ -1,37 +1,26 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import Container from "../components/Container";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import { useSelector } from "react-redux";
-import "yup-phone";
-import { useNavigate } from "react-router-dom";
 import { PDFViewer, StyleSheet } from "@react-pdf/renderer";
-import PDFdoc from "../components/PDFdoc";
-export default function CVTabs({ active }) {
-  const navigate = useNavigate();
+import PDFdoc from "../PDFdoc";
+import CVcolor from "../CVcolor";
+export default function CurrentCVpdf({ match }) {
   const data = useSelector((state) => state);
-  const [valueNav, setValueNav] = useState(active);
-  function handleChangeIndexNav(event, index) {
-    console.log(index);
-    setValueNav(index);
-    navigate(`../cv/:id/${index}`);
-  }
+  const bg = useSelector((state) => state.cvBg);
+  const pdfStyles = StyleSheet.create({
+    PDFViewer: {
+      maxWidth: "595px",
+      width: "100vw",
+      minHeight: "720px",
+      marginRight: "auto",
+      marginLeft: "auto",
+    },
+  });
   return (
-    <Tabs
-      value={valueNav}
-      onChange={handleChangeIndexNav}
-      textColor="secondary"
-      variant="fullWidth"
-      indicatorColor="secondary"
-      aria-label="secondary tabs example"
-      sx={styles.tabs}
-    >
-      <Tab value="basic" label="Basic" />
-      <Tab value="exp" label="Expirience" />
-      <Tab value="pdf" label="PDF" />
-    </Tabs>
+    <>
+      <CVcolor />
+      <PDFViewer style={pdfStyles.PDFViewer}>
+        <PDFdoc data={data} bg={bg} />
+      </PDFViewer>
+    </>
   );
 }
 const styles = {
@@ -94,7 +83,7 @@ const styles = {
   },
   tabs: {
     width: "100%",
-    maxWidth: "330px",
+    maxWidth: "360px",
     display: "flex",
     padding: "5px",
     justifyContent: "center",

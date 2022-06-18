@@ -8,15 +8,18 @@ import Settings from "./pages/Settings";
 import SettingsProivider from "./context/SettingsContext";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18next.js";
+import ActiveProivider from "./context/ActiveContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
         <AuthProivider>
-          <SettingsProivider>
-            <App />
-          </SettingsProivider>
+          <ActiveProivider>
+            <SettingsProivider>
+              <App />
+            </SettingsProivider>
+          </ActiveProivider>
         </AuthProivider>
       </I18nextProvider>
     </Provider>
