@@ -47,7 +47,7 @@ export default function StudyForm({ func, add, cancel, urlId }) {
         <Form func={saveData} />
       ) : (
         <Button variant="contained" onClick={openAddModal}>
-          Add
+          {t("buttons.add")}
         </Button>
       )}
       <ModalStudy
@@ -65,6 +65,6 @@ const styles = {
     alignItems: "center",
     gap: "20px",
     height: "100%",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
 };

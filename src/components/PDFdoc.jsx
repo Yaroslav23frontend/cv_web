@@ -291,9 +291,7 @@ export default function PDFdoc({ data, bg }) {
                           stroke="rgb(255,255,255)"
                         />
                       </Svg>
-                      <Text style={styles.h2}>
-                        {t("languages_section.lan")}
-                      </Text>
+                      <Text style={styles.h2}>{t("languages_section.h")}</Text>
                     </View>
                     <Text style={[styles.personalP, styles.span]}>
                       {el.lan}

@@ -73,7 +73,7 @@ export default function SkillItem({ data, id, urlId }) {
         handleConfirm={saveDataModal}
         handleCancele={closeModalEdit}
         data={data}
-        title={"Edit skill"}
+        edit={true}
       />
     </>
   );
@@ -82,7 +82,7 @@ const styles = {
   paper: {
     display: "flex",
     justifyContent: "space-between",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
   box: {
     display: "flex",

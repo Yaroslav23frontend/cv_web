@@ -3,7 +3,9 @@ import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import SkillItem from "./SkillItem";
 import SkillsForm from "./form/SkillsForm";
+import { useTranslation } from "react-i18next";
 export default function Skills({ urlId }) {
+  const { t } = useTranslation();
   const data = useSelector((state) => state.cvSkills);
   return (
     <Box sx={styles.box}>
@@ -13,7 +15,7 @@ export default function Skills({ urlId }) {
         sx={styles.title}
         fontWeight="bold"
       >
-        Skills
+        {t("skills.h")}
       </Typography>
       {data?.map((el, id) => (
         <SkillItem key={`skill-${el.id}`} data={el} id={id} urlId={urlId} />

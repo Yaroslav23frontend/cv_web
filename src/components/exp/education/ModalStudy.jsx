@@ -8,14 +8,18 @@ export default function ModalStudy({
   handleConfirm,
   handleCancele,
   data,
+  edit = false,
 }) {
   const { t } = useTranslation();
 
   return (
     <div>
       <ModalItem open={open} handleCancele={handleCancele}>
-        <Typography variant="h4" component="h1">
-          Add Education Experience
+        <Typography variant="h4" component="h1" fontWeight="bold">
+          {t("study_section.h")}
+        </Typography>
+        <Typography variant="h6" component="h2">
+          {edit ? t("edit") : t("buttons.add")}
         </Typography>
         <Form func={handleConfirm} data={data} />
       </ModalItem>

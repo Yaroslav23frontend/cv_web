@@ -53,57 +53,12 @@ export default function LanForm({ urlId }) {
   );
 }
 const styles = {
-  title: {
-    alignSelf: "flex-start",
-  },
-
-  paper: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    padding: "20px",
-    maxWidth: "400px",
-    padding: "10px",
-    width: "100%",
-  },
   inputBox: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     gap: "20px",
     height: "100%",
-    width: "calc(100% - 100px)",
-  },
-  button: {
-    alignSelf: "flex-start",
-  },
-  icon: {
-    marginRight: "10px",
-  },
-  linksBox: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: "20px",
-    width: "100%",
-  },
-  link: {
-    display: "flex",
-  },
-  error: {
-    fontSize: "12px",
-    color: "red",
-    marginTop: "-15px",
-    marginLeft: "15px",
-    alignSelf: "flex-start",
-  },
-  errorGoogle: {
-    fontSize: "12px",
-    color: "red",
-    marginTop: "-15px",
-  },
-  signUpLink: {
-    justifySelf: "center",
+    width: "calc(100% - 20px)",
   },
 };

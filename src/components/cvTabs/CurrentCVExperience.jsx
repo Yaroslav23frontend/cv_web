@@ -7,23 +7,28 @@ import Work from "../exp/work/Work";
 import Study from "../exp/education/Study";
 import Skills from "../exp/skills/Skills";
 import Lan from "../exp/lan/Lan";
-export default function CurrentCVExperience({ id }) {
+import { useTranslation } from "react-i18next";
+export default function CurrentCVExperience({ id, next }) {
+  const { t } = useTranslation();
   return (
     <>
       <Typography variant="h4" component="h1" sx={styles.title}>
-        Experience
+        {t("cvSection.exp")}
       </Typography>
       <CustomBox>
-        <Box sx={styles.boxSections}>
-          <Description urlId={id} />
-          <Work urlId={id} />
-          <Study urlId={id} />
-          <Skills urlId={id} />
-          <Lan urlId={id} />
-        </Box>
+        <Description urlId={id} />
+        <Work urlId={id} />
+        <Study urlId={id} />
+        <Skills urlId={id} />
+        <Lan urlId={id} />
       </CustomBox>
-      <Button sx={styles.next} onClick={() => {}}>
-        Next
+      <Button
+        sx={styles.next}
+        onClick={() => {
+          next("pdf");
+        }}
+      >
+        {t("buttons.next")}
       </Button>
     </>
   );

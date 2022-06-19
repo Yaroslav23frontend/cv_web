@@ -56,7 +56,7 @@ export default function CV({ data }) {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      width: "100%",
+      width: "calc(100% - 20px)",
       gap: "10px",
       textAlign: "center",
       borderTop: "1px solid #eee",

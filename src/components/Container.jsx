@@ -1,31 +1,15 @@
 import { Button } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export default function Container({ children }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  async function logOut() {
-    await signOut(auth)
-      .then(() => {
-        console.log("Sign-out successful.");
-        navigate("../");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   return (
     <Paper sx={styles.paper}>
       <Box sx={styles.topNav}>
-        <Button onClick={() => navigate(-1)}>{t("buttons.back")}</Button>
-        <Button sx={styles.buttonSignOut} onClick={logOut}>
-          {t("buttons.signOut")}
-        </Button>
+        <Button onClick={() => navigate("../cv")}>{t("buttons.back")}</Button>
       </Box>
       {children}
     </Paper>

@@ -31,29 +31,21 @@ export default function Form({ func, data = "" }) {
   });
   return (
     <>
-      <>
-        <TextField
-          fullWidth
-          id="description"
-          name="description"
-          label="Description"
-          value={formik.values.description}
-          onChange={formik.handleChange}
-          multiline
-          error={
-            formik.touched.description && Boolean(formik.errors.description)
-          }
-          helperText={formik.touched.description && formik.errors.description}
-        />
+      <TextField
+        fullWidth
+        id="description"
+        name="description"
+        label={t("description")}
+        value={formik.values.description}
+        onChange={formik.handleChange}
+        multiline
+        error={formik.touched.description && Boolean(formik.errors.description)}
+        helperText={formik.touched.description && formik.errors.description}
+      />
 
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={formik.handleSubmit}
-        >
-          Save
-        </Button>
-      </>
+      <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
+        {t("buttons.save")}
+      </Button>
     </>
   );
 }

@@ -15,14 +15,18 @@ export default function ModalSkills({
   handleConfirm,
   handleCancele,
   data,
+  edit,
 }) {
   const { t } = useTranslation();
 
   return (
     <div>
       <ModalItem open={open} handleCancele={handleCancele}>
-        <Typography variant="h4" component="h1">
-          Add Skills
+        <Typography variant="h4" component="h1" fontWeight="bold">
+          {t("skills.h")}
+        </Typography>
+        <Typography variant="h6" component="h2">
+          {edit ? t("edit") : t("buttons.add")}
         </Typography>
         <Form func={handleConfirm} data={data} />
       </ModalItem>

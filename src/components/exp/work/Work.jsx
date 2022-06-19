@@ -4,8 +4,10 @@ import WorkForm from "./form/WorkForm";
 import { useSelector } from "react-redux";
 import WorkItem from "./WorkItem";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 export default function Work({ urlId }) {
   const data = useSelector((state) => state.cvWork);
+  const { t } = useTranslation();
   return (
     <Box sx={styles.box}>
       <Typography
@@ -14,7 +16,7 @@ export default function Work({ urlId }) {
         sx={styles.title}
         fontWeight="bold"
       >
-        Work Experience
+        {t("work_exp_section.h")}
       </Typography>
       {data.length !== 0 ? (
         <>

@@ -1,4 +1,9 @@
-import { addCVWorkExp, deleteCVWorkExp, editCVWorkExp } from "../action";
+import {
+  addCVWorkExp,
+  deleteCVWorkExp,
+  editCVWorkExp,
+  uploadCVwork,
+} from "../action";
 import date from "../../utilites/date";
 export function reducerWork(state = [], action) {
   switch (action.type) {
@@ -28,6 +33,15 @@ export function reducerWork(state = [], action) {
       return data;
     case deleteCVWorkExp:
       return [...state.filter((el) => el.id !== action.payload)];
+    case uploadCVwork:
+      const uploadData = JSON.parse(JSON.stringify(action.payload)).map(
+        (el) => {
+          el.stringStart = date(el.start);
+          el.stringEnd = el.end !== "" ? date(el.end) : "";
+          return el;
+        }
+      );
+      return uploadData;
     default:
       return state;
   }

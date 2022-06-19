@@ -65,7 +65,7 @@ export default function Form({
         fullWidth
         id="studies"
         name="studies"
-        label="Studies"
+        label={t("study_section.studies")}
         value={formik.values.studies}
         onChange={formik.handleChange}
         error={formik.touched.studies && Boolean(formik.errors.studies)}
@@ -75,7 +75,7 @@ export default function Form({
         fullWidth
         id="location"
         name="location"
-        label="Location"
+        label={t("study_section.location")}
         value={formik.values.location}
         onChange={formik.handleChange}
         error={formik.touched.location && Boolean(formik.errors.location)}
@@ -85,7 +85,7 @@ export default function Form({
         fullWidth
         id="insitution"
         name="insitution"
-        label="Insitution"
+        label={t("study_section.insitution")}
         value={formik.values.insitution}
         onChange={formik.handleChange}
         error={formik.touched.insitution && Boolean(formik.errors.insitution)}
@@ -95,7 +95,7 @@ export default function Form({
         fullWidth
         id="start"
         name="start"
-        label="Start Date"
+        label={t("study_section.start_date")}
         value={formik.values.start}
         onChange={formik.handleChange}
         type="date"
@@ -109,7 +109,7 @@ export default function Form({
         fullWidth
         id="end"
         name="end"
-        label="End Date"
+        label={t("study_section.end_date")}
         value={formik.values.end}
         onChange={formik.handleChange}
         type="date"
@@ -123,7 +123,7 @@ export default function Form({
         fullWidth
         id="description"
         name="description"
-        label="Description"
+        label={t("study_section.description")}
         value={formik.values.description}
         onChange={formik.handleChange}
         multiline
@@ -131,7 +131,7 @@ export default function Form({
         helperText={formik.touched.description && formik.errors.description}
       />
       <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
-        Save
+        {t("buttons.save")}
       </Button>
     </>
   );

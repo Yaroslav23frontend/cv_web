@@ -2,6 +2,7 @@ import {
   addCVBasicInfo,
   deleteCVBasicInfo,
   uploadPhotoCVBasicInfo,
+  uploadCVBasicInfo,
 } from "../action";
 const intialState = {
   photo: "",
@@ -37,6 +38,8 @@ export function reducerBasicInfo(state = intialState, action) {
         ...state,
         photo: action.payload,
       };
+    case uploadCVBasicInfo:
+      return action.payload;
     default:
       return state;
   }

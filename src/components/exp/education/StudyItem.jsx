@@ -11,9 +11,10 @@ import { useEffect, useState } from "react";
 import { useActive } from "../../../context/ActiveContext";
 import update from "../../../utilites/update";
 import date from "../../../utilites/date";
+import { useTranslation } from "react-i18next";
 export default function StudyItem({ data, id, urlId }) {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const user = useSelector((state) => state.user.id);
   const cvStudy = useSelector((state) => state.cvStudy);
   const { active } = useActive();
@@ -64,7 +65,7 @@ export default function StudyItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  Study:&nbsp;
+                  {t("study_section.studies")}:&nbsp;
                 </Typography>
                 {data.studies}
               </Typography>
@@ -72,7 +73,7 @@ export default function StudyItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  City:&nbsp;
+                  {t("study_section.location")}:&nbsp;
                 </Typography>
                 {data.location}
               </Typography>
@@ -80,7 +81,7 @@ export default function StudyItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  Institution:&nbsp;
+                  {t("study_section.insitution")}:&nbsp;
                 </Typography>
                 {data.insitution}
               </Typography>
@@ -94,7 +95,9 @@ export default function StudyItem({ data, id, urlId }) {
         </Box>
         {data.description !== "" ? (
           <Box sx={styles.boxDescription}>
-            <Typography fontWeight="bold">Description</Typography>
+            <Typography fontWeight="bold">
+              {t("study_section.description")}
+            </Typography>
             <Typography>{data.description}</Typography>
           </Box>
         ) : (
@@ -116,6 +119,7 @@ export default function StudyItem({ data, id, urlId }) {
         handleCancele={closeModalEdit}
         data={data}
         title={"Edit Education"}
+        edit={true}
       />
     </>
   );
@@ -124,7 +128,7 @@ const styles = {
   paper: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
   box: {
     display: "flex",

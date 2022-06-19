@@ -29,7 +29,7 @@ export default function Form({ func, data = "" }) {
         fullWidth
         id="skill"
         name="skill"
-        label="Skill"
+        label={t("skills.skill")}
         value={formik.values.skill}
         onChange={formik.handleChange}
         error={formik.touched.skill && Boolean(formik.errors.skill)}
@@ -37,7 +37,7 @@ export default function Form({ func, data = "" }) {
       />
 
       <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
-        Save
+        {t("buttons.save")}
       </Button>
     </>
   );

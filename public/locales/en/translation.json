@@ -79,7 +79,9 @@
     "change": "Change",
     "back": "Back",
     "next": "Next",
-    "uploadPhoto": "Upload photo"
+    "uploadPhoto": "Upload photo",
+    "save": "Save",
+    "download": "Download"
   },
   "filters": {
     "filter": "Filter",
@@ -151,9 +153,11 @@
     "h": "Skills",
     "skill": "Skill"
   },
-
+  "edit": "Edit",
+  "description": "Description",
   "languages_section": {
-    "lan": "Language",
+    "h": "Language",
+    "level": "Level",
     "native": "Native",
     "pre": "Pre-intermediate",
     "inter": "Intermediate",

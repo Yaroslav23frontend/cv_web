@@ -1,4 +1,9 @@
-import { addCVstudy, deleteCVstudy, editCVstudy } from "../action";
+import {
+  addCVstudy,
+  deleteCVstudy,
+  editCVstudy,
+  uploadCVstudy,
+} from "../action";
 import date from "../../utilites/date";
 export function reducerStudy(state = [], action) {
   switch (action.type) {
@@ -28,6 +33,13 @@ export function reducerStudy(state = [], action) {
       return data;
     case deleteCVstudy:
       return [...state.filter((el) => el.id !== action.payload)];
+    case uploadCVstudy:
+      const uploadData = action.payload.map((el) => {
+        el.stringStart = date(el.start);
+        el.stringEnd = el.end !== "" ? date(el.end) : "";
+        return el;
+      });
+      return uploadData;
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -15,11 +15,11 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import "yup-phone";
 import { useLocation } from "react-router-dom";
-export default function CurrentCVBasic({ id }) {
+export default function CurrentCVBasic({ id, next }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.cvBasicInfo);
   const user = useSelector((state) => state.user.id);
+  const data = useSelector((state) => state.cvBasicInfo);
   const location = useLocation();
   function docName() {
     const index = location.pathname.indexOf("cv");
@@ -42,7 +42,7 @@ export default function CurrentCVBasic({ id }) {
       .string("Enter your email")
       .email("Enter a valid email")
       .required("Email is required"),
-    phone: yup
+    tel: yup
       .string("Enter your phone number")
       .phone()
       .required("Phone number is required"),
@@ -78,7 +78,7 @@ export default function CurrentCVBasic({ id }) {
       name: data.name,
       lastName: data.lastName,
       email: data.email,
-      phone: data.tel,
+      tel: data.tel,
       city: data.city,
       address: data.address,
       zip: data.zip,
@@ -87,14 +87,14 @@ export default function CurrentCVBasic({ id }) {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      alert(JSON.stringify(values, null, 2));
+      next("exp");
       dispatch({
         type: addCVBasicInfo,
         payload: {
           name: values.name,
           lastName: values.lastName,
           email: values.email,
-          tel: values.phone,
+          tel: values.tel,
           city: values.city,
           address: values.address,
           zip: values.zip,
@@ -107,15 +107,15 @@ export default function CurrentCVBasic({ id }) {
           name: values.name,
           lastName: values.lastName,
           email: values.email,
-          tel: values.phone,
+          tel: values.tel,
           city: values.city,
           address: values.address,
           zip: values.zip,
           linkedIn: values.linkedIn,
           skype: values.skype,
+          photo: data.photo,
         },
       });
-      console.log(values);
     },
   });
 
@@ -127,6 +127,17 @@ export default function CurrentCVBasic({ id }) {
     dispatch({ type: uploadPhotoCVBasicInfo, payload: img });
     setModalAvatar(false);
   }
+  useEffect(() => {
+    formik.values.name = data.name;
+    formik.values.lastName = data.lastName;
+    formik.values.email = data.email;
+    formik.values.tel = data.tel;
+    formik.values.city = data.city;
+    formik.values.address = data.address;
+    formik.values.zip = data.zip;
+    formik.values.linkedIn = data.linkedIn;
+    formik.values.skype = data.skype;
+  }, [data]);
   return (
     <>
       <Typography variant="h4" component="h1" sx={styles.title}>
@@ -191,14 +202,14 @@ export default function CurrentCVBasic({ id }) {
           />
           <TextField
             fullWidth
-            id="phone"
-            name="phone"
+            id="tel"
+            name="tel"
             label={t("cvPersonal.tel")}
             type="tel"
-            value={formik.values.phone}
+            value={formik.values.tel}
             onChange={formik.handleChange}
-            error={formik.touched.phone && Boolean(formik.errors.phone)}
-            helperText={formik.touched.phone && formik.errors.phone}
+            error={formik.touched.tel && Boolean(formik.errors.tel)}
+            helperText={formik.touched.tel && formik.errors.tel}
           />
 
           <TextField

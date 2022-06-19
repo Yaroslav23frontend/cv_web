@@ -74,7 +74,7 @@ export default function LanItem({ data, id, urlId }) {
         handleConfirm={saveDataModal}
         handleCancele={closeModalEdit}
         data={data}
-        title={"Edit Language"}
+        edit={true}
       />
     </>
   );
@@ -84,7 +84,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
     padding: 1,
   },
   box: {

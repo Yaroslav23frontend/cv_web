@@ -1,4 +1,4 @@
-import { addCVlan, deleteCVlan, editCVlan } from "../action";
+import { addCVlan, deleteCVlan, editCVlan, uploadCVlan } from "../action";
 export function reducerLan(state = [], action) {
   switch (action.type) {
     case addCVlan:
@@ -16,6 +16,8 @@ export function reducerLan(state = [], action) {
       return data;
     case deleteCVlan:
       return [...state.filter((el) => el.id !== action.payload)];
+    case uploadCVlan:
+      return action.payload;
     default:
       return state;
   }

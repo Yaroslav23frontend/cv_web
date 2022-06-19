@@ -13,8 +13,11 @@ export default function ModalDescription({
   return (
     <div>
       <ModalItem open={open} handleCancele={handleCancele}>
-        <Typography variant="h4" component="h1">
-          Edit description
+        <Typography variant="h4" component="h1" fontWeight="bold">
+          {t("description")}
+        </Typography>
+        <Typography variant="h6" component="h2">
+          {t("edit")}
         </Typography>
         <Form func={handleConfirm} data={data} />
       </ModalItem>

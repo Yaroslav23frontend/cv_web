@@ -48,6 +48,7 @@ const styles = {
     alignItems: "center",
     gap: "20px",
     height: "100%",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
+    marginBottom: "20px",
   },
 };

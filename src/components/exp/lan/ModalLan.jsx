@@ -3,14 +3,23 @@ import { useTranslation } from "react-i18next";
 import Form from "./form/Form";
 import { Typography } from "@mui/material";
 import ModalItem from "../../ModalItem";
-export default function ModalLan({ open, handleConfirm, handleCancele, data }) {
+export default function ModalLan({
+  open,
+  handleConfirm,
+  handleCancele,
+  data,
+  edit = false,
+}) {
   const { t } = useTranslation();
 
   return (
     <div>
       <ModalItem open={open} handleCancele={handleCancele}>
-        <Typography variant="h4" component="h1">
-          Add Education Experience
+        <Typography variant="h4" component="h1" fontWeight="bold">
+          {t("languages_section.h")}
+        </Typography>
+        <Typography variant="h6" component="h2">
+          {edit ? t("edit") : t("buttons.add")}
         </Typography>
         <Form func={handleConfirm} data={data} />
       </ModalItem>

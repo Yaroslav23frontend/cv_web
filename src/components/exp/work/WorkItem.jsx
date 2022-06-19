@@ -10,7 +10,9 @@ import { deleteCVWorkExp, editCVWorkExp } from "../../../store/action";
 import { useState } from "react";
 import ModalWork from "./ModalWork";
 import update from "../../../utilites/update";
+import { useTranslation } from "react-i18next";
 export default function WorkItem({ data, id, urlId }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.id);
@@ -65,7 +67,7 @@ export default function WorkItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  Title:&nbsp;
+                  {t("work_exp_section.title")}:&nbsp;
                 </Typography>
                 {data.title}
               </Typography>
@@ -73,7 +75,7 @@ export default function WorkItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  Company:&nbsp;
+                  {t("work_exp_section.company")}:&nbsp;
                 </Typography>
                 {data.company}
               </Typography>
@@ -81,7 +83,7 @@ export default function WorkItem({ data, id, urlId }) {
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
-                  City:&nbsp;
+                  {t("work_exp_section.city")}:&nbsp;
                 </Typography>
                 {data.city}
               </Typography>
@@ -95,7 +97,9 @@ export default function WorkItem({ data, id, urlId }) {
         </Box>
         {data.description !== "" ? (
           <Box sx={styles.boxDescription}>
-            <Typography fontWeight="bold">Description</Typography>
+            <Typography fontWeight="bold">
+              {t("work_exp_section.description")}
+            </Typography>
             <Typography>{data.description}</Typography>
           </Box>
         ) : (
@@ -115,7 +119,7 @@ export default function WorkItem({ data, id, urlId }) {
           handleConfirm={saveDataModal}
           handleCancele={closeModalEdit}
           data={data}
-          title={"Edit work Experience"}
+          edit={true}
         />
       </Paper>
     </>
@@ -125,7 +129,7 @@ const styles = {
   paper: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
   box: {
     display: "flex",

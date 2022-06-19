@@ -5,11 +5,14 @@ import Box from "@mui/material/Box";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCVbg } from "../store/action";
-export default function CVcolor() {
+import update from "../utilites/update";
+export default function CVcolor({ urlId }) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cvBg);
+  const user = useSelector((state) => state.user.id);
   function color(color) {
     dispatch({ type: changeCVbg, payload: color });
+    update(user, urlId, "", "", color, true, "cvBg");
   }
   return (
     <Box sx={styles.box}>

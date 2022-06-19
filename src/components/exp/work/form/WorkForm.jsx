@@ -48,14 +48,13 @@ export default function WorkForm({ urlId }) {
           </>
         ) : (
           <Button variant="contained" onClick={() => setModalAdd(true)}>
-            Add
+            {t("buttons.add")}
           </Button>
         )}
         <ModalWork
           open={modalAdd}
           handleConfirm={saveDataModal}
           handleCancele={closeModalAdd}
-          title="Add Work Experience"
         />
       </Box>
     </>
@@ -68,6 +67,6 @@ const styles = {
     alignItems: "center",
     gap: "20px",
     height: "100%",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
 };

@@ -9,7 +9,9 @@ import { addCVdescription } from "../../../store/action";
 import ModalDescription from "./ModalDescription";
 import { useState } from "react";
 import update from "../../../utilites/update";
+import { useTranslation } from "react-i18next";
 export default function DescriptionItem({ urlId }) {
+  const { t } = useTranslation();
   const data = useSelector((state) => state.cvDescription);
   const user = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ export default function DescriptionItem({ urlId }) {
     return (
       <Paper sx={styles.paper}>
         <Box sx={styles.boxDescription}>
-          <Typography fontWeight="bold">Description</Typography>
+          <Typography fontWeight="bold">{t("description")}</Typography>
           <Typography>{data}</Typography>
         </Box>
         <Box sx={styles.boxButtons}>
@@ -62,7 +64,7 @@ const styles = {
   paper: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100% - 100px)",
+    width: "calc(100% - 20px)",
   },
   box: {
     display: "flex",
