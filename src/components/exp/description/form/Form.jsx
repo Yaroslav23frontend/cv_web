@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addCVdescription } from "../../../../store/action";
+import CustomButton from "../../../ui/button/CustomButton";
 const validationSchema = yup.object({
   description: yup
     .string("Entre your description")
@@ -43,9 +44,9 @@ export default function Form({ func, data = "" }) {
         helperText={formik.touched.description && formik.errors.description}
       />
 
-      <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
+      <CustomButton func={formik.handleSubmit}>
         {t("buttons.save")}
-      </Button>
+      </CustomButton>
     </>
   );
 }

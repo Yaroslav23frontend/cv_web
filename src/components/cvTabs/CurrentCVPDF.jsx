@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { PDFDownloadLink, PDFViewer, StyleSheet } from "@react-pdf/renderer";
 import PDFdoc from "../PDFdoc";
 import CVcolor from "../CVcolor";
-import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import CustomButton from "../ui/button/CustomButton";
 export default function CurrentCVpdf({ id }) {
   const data = useSelector((state) => state);
   const bg = useSelector((state) => state.cvBg);
@@ -32,7 +32,9 @@ export default function CurrentCVpdf({ id }) {
           loading ? (
             "Loading document..."
           ) : (
-            <Button variant="contained">{t("buttons.download")}</Button>
+            <CustomButton variant="contained">
+              {t("buttons.download")}
+            </CustomButton>
           )
         }
       </PDFDownloadLink>

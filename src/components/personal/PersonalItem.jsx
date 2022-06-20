@@ -13,10 +13,8 @@ import ModalPersonal from "./ModalPersonal";
 export default function PersonalItem({ data, id, urlId }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
   const user = useSelector((state) => state.user.id);
   const [modalEdit, setModalEdit] = useState(false);
-  const cvBasic = useSelector((state) => state.cvBasicInfo);
   function Delete() {
     const newData = {
       photo: "",
@@ -62,33 +60,33 @@ export default function PersonalItem({ data, id, urlId }) {
     <>
       <Paper sx={styles.paper}>
         <Box sx={styles.box}>
-          <Box>
-            <Box>
-              <Typography>
+          <Box sx={{ width: "100%" }}>
+            <Box sx={styles.boxText}>
+              <Typography sx={styles.text}>
                 <Typography fontWeight="bold" component="span">
                   {t("cvPersonal.name")}:&nbsp;
                 </Typography>
                 {data.name}
               </Typography>
             </Box>
-            <Box>
-              <Typography>
+            <Box sx={styles.boxText}>
+              <Typography sx={styles.text}>
                 <Typography fontWeight="bold" component="span">
                   {t("cvPersonal.lastName")}:&nbsp;
                 </Typography>
                 {data.lastName}
               </Typography>
             </Box>
-            <Box>
-              <Typography>
+            <Box sx={styles.boxText}>
+              <Typography sx={styles.text}>
                 <Typography fontWeight="bold" component="span">
                   {t("cvPersonal.email")}:&nbsp;
                 </Typography>
                 {data.email}
               </Typography>
             </Box>
-            <Box>
-              <Typography>
+            <Box sx={styles.boxText}>
+              <Typography sx={styles.text}>
                 <Typography fontWeight="bold" component="span">
                   {t("cvPersonal.tel")}:&nbsp;
                 </Typography>
@@ -96,8 +94,8 @@ export default function PersonalItem({ data, id, urlId }) {
               </Typography>
             </Box>
             {data.city !== "" ? (
-              <Box>
-                <Typography>
+              <Box sx={styles.boxText}>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.city")}:&nbsp;
                   </Typography>
@@ -108,8 +106,8 @@ export default function PersonalItem({ data, id, urlId }) {
               <></>
             )}
             {data.address !== "" ? (
-              <Box>
-                <Typography>
+              <Box sx={styles.boxText}>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.address")}:&nbsp;
                   </Typography>
@@ -120,8 +118,8 @@ export default function PersonalItem({ data, id, urlId }) {
               <></>
             )}
             {data.zip !== "" ? (
-              <Box>
-                <Typography>
+              <Box sx={styles.boxText}>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.zip")}:&nbsp;
                   </Typography>
@@ -132,8 +130,8 @@ export default function PersonalItem({ data, id, urlId }) {
               <></>
             )}
             {data.linkedIn !== "" ? (
-              <Box>
-                <Typography>
+              <Box sx={styles.boxText}>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.linkedIn")}:&nbsp;
                   </Typography>
@@ -145,7 +143,7 @@ export default function PersonalItem({ data, id, urlId }) {
             )}
             {data.skype ? (
               <Box>
-                <Typography>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.skype")}:&nbsp;
                   </Typography>
@@ -156,8 +154,8 @@ export default function PersonalItem({ data, id, urlId }) {
               <></>
             )}
             {data.git !== "" ? (
-              <Box>
-                <Typography>
+              <Box sx={styles.boxText}>
+                <Typography sx={styles.text}>
                   <Typography fontWeight="bold" component="span">
                     {t("cvPersonal.git")}:&nbsp;
                   </Typography>
@@ -192,19 +190,28 @@ const styles = {
   paper: {
     display: "flex",
     flexDirection: "column",
-    width: "calc(100% - 20px)",
+    maxWidth: "calc(100% - 20px)",
+    width: "100%",
     marginTop: 2,
     marginBottom: 2,
   },
   box: {
+    width: "100%",
     display: "flex",
     justifyContent: "space-between",
-    padding: 1,
+    padding: 2,
   },
   boxDescription: {
     padding: 1,
   },
   boxButtons: {
     alignSelf: "flex-end",
+  },
+  text: {
+    width: "calc(100% - 20px)",
+    wordWrap: "break-word",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
 };

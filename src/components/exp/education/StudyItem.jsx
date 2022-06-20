@@ -7,17 +7,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCVstudy, editCVstudy } from "../../../store/action";
 import ModalStudy from "./ModalStudy";
-import { useEffect, useState } from "react";
-import { useActive } from "../../../context/ActiveContext";
+import { useState } from "react";
 import update from "../../../utilites/update";
-import date from "../../../utilites/date";
 import { useTranslation } from "react-i18next";
 export default function StudyItem({ data, id, urlId }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const user = useSelector((state) => state.user.id);
   const cvStudy = useSelector((state) => state.cvStudy);
-  const { active } = useActive();
   const [modalEdit, setModalEdit] = useState(false);
   function Delete() {
     dispatch({ type: deleteCVstudy, payload: data.id });

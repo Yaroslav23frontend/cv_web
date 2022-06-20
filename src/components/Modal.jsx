@@ -1,11 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import SecondaryButton from "./ui/button/SecondaryButton";
 export default function CustomModal({
   open,
   handleConfirm,
@@ -102,10 +102,12 @@ export default function CustomModal({
               />
             </Box>
             <Box sx={styles.boxButtons}>
-              <Button onClick={formik.handleSubmit}>
+              <SecondaryButton func={formik.handleSubmit}>
                 {t("buttons.rename")}
-              </Button>
-              <Button onClick={handleCancele}>{t("buttons.cancel")}</Button>
+              </SecondaryButton>
+              <SecondaryButton func={handleCancele}>
+                {t("buttons.cancel")}
+              </SecondaryButton>
             </Box>
           </Box>
         </Modal>
@@ -157,10 +159,12 @@ export default function CustomModal({
             </Box>
 
             <Box sx={styles.boxButtons}>
-              <Button onClick={formikEditItem.handleSubmit}>
+              <SecondaryButton func={formikEditItem.handleSubmit}>
                 {t("buttons.change")}
-              </Button>
-              <Button onClick={handleCancele}>{t("buttons.cancel")}</Button>
+              </SecondaryButton>
+              <SecondaryButton func={handleCancele}>
+                {t("buttons.cancel")}
+              </SecondaryButton>
             </Box>
           </Box>
         </Modal>
@@ -177,8 +181,12 @@ export default function CustomModal({
         <Box sx={styles.box}>
           <p id="parent-modal-description">{massege}</p>
           <Box sx={styles.boxButtons}>
-            <Button onClick={handleConfirm}>{t("buttons.delete")}</Button>
-            <Button onClick={handleCancele}>{t("buttons.cancel")}</Button>
+            <SecondaryButton func={handleConfirm}>
+              {t("buttons.delete")}
+            </SecondaryButton>
+            <SecondaryButton func={handleCancele}>
+              {t("buttons.cancel")}
+            </SecondaryButton>
           </Box>
         </Box>
       </Modal>

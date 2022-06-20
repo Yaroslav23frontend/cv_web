@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addCVstudy } from "../../../../store/action";
 import Form from "./Form";
 import ModalStudy from "../ModalStudy";
 import update from "../../../../utilites/update";
-import { useActive } from "../../../../context/ActiveContext";
-
+import CustomButton from "../../../ui/button/CustomButton";
 export default function StudyForm({ func, add, cancel, urlId }) {
   const { t } = useTranslation();
   const data = useSelector((state) => state.cvStudy);
@@ -46,9 +39,7 @@ export default function StudyForm({ func, add, cancel, urlId }) {
       {data.length === 0 ? (
         <Form func={saveData} />
       ) : (
-        <Button variant="contained" onClick={openAddModal}>
-          {t("buttons.add")}
-        </Button>
+        <CustomButton func={openAddModal}>{t("buttons.add")}</CustomButton>
       )}
       <ModalStudy
         open={modalAdd}

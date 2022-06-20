@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addCVWorkExp } from "../../../../store/action";
 import ModalWork from "../ModalWork";
 import Form from "./Form";
 import update from "../../../../utilites/update";
+import CustomButton from "../../../ui/button/CustomButton";
 export default function WorkForm({ urlId }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cvWork);
   const user = useSelector((state) => state.user.id);
@@ -47,9 +41,9 @@ export default function WorkForm({ urlId }) {
             <Form func={saveData} />
           </>
         ) : (
-          <Button variant="contained" onClick={() => setModalAdd(true)}>
+          <CustomButton func={() => setModalAdd(true)}>
             {t("buttons.add")}
-          </Button>
+          </CustomButton>
         )}
         <ModalWork
           open={modalAdd}

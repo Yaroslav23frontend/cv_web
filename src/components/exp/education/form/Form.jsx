@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import CustomButton from "../../../ui/button/CustomButton";
 
 const validationSchema = yup.object({
   studies: yup
@@ -41,9 +38,6 @@ export default function Form({
   },
 }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const cvStudy = useSelector((state) => state.cvStudy);
   const formik = useFormik({
     initialValues: {
       studies: data.studies,
@@ -130,9 +124,9 @@ export default function Form({
         error={formik.touched.description && Boolean(formik.errors.description)}
         helperText={formik.touched.description && formik.errors.description}
       />
-      <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
+      <CustomButton func={formik.handleSubmit}>
         {t("buttons.save")}
-      </Button>
+      </CustomButton>
     </>
   );
 }

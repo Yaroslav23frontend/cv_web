@@ -1,9 +1,9 @@
-import React, { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useFormik } from "formik";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContext";

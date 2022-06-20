@@ -1,12 +1,20 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
 import { db } from "../firebase/firebase";
 import { deleteDoc, doc, setDoc, getDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
-import { addCVs, deleteCV, deleteItem } from "../store/action";
+import {
+  addCVdescription,
+  addCVs,
+  changeCVbg,
+  deleteCV,
+  uploadCVBasicInfo,
+  uploadCVlan,
+  uploadCVskills,
+  uploadCVstudy,
+  uploadCVwork,
+} from "../store/action";
 import { completedItem } from "../store/action";
 import { useNavigate } from "react-router-dom";
 import CustomModal from "./Modal";
@@ -15,13 +23,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useActive } from "../context/ActiveContext";
 import IconButton from "@mui/material/IconButton";
+import { grey } from "@mui/material/colors";
 export default function CV({ data }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.id);
   const collection = useSelector((state) => state.collection);
-  const items = useSelector((state) => state.items);
   const [modal, setModal] = useState(false);
   const [delModal, setDelModal] = useState(false);
   const id = useSelector((state) => state.user.id);
@@ -52,38 +60,54 @@ export default function CV({ data }) {
       collection: result,
     });
   }
-  const styles = {
-    box: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      width: "calc(100% - 20px)",
-      gap: "10px",
-      textAlign: "center",
-      borderTop: "1px solid #eee",
-      borderBottom: "1px solid #eee",
-    },
-    text: {
-      textDecoration: data.completed ? "line-through" : "none",
-    },
-    checkboxBox: {
-      display: "flex",
-      gap: "10px",
-      alignItems: "center",
-    },
-  };
+  function openCv() {
+    dispatch({
+      type: uploadCVBasicInfo,
+      payload: {
+        photo: "",
+        name: "",
+        lastName: "",
+        email: "",
+        tel: "",
+        address: "",
+        zip: "",
+        city: "",
+        linkedIn: "",
+        skype: "",
+        git: "",
+      },
+    });
+    dispatch({
+      type: addCVdescription,
+      payload: "",
+    });
+    dispatch({
+      type: uploadCVstudy,
+      payload: [],
+    });
+    dispatch({
+      type: uploadCVwork,
+      payload: [],
+    });
+    dispatch({
+      type: uploadCVskills,
+      payload: [],
+    });
+    dispatch({
+      type: uploadCVlan,
+      payload: [],
+    });
+    dispatch({
+      type: changeCVbg,
+      payload: grey[900],
+    });
+    navigate(`../cv/${data}`);
+  }
   const { setActive } = useActive();
   return (
     <>
       <Box sx={styles.box}>
-        <Button
-          onClick={() => {
-            setActive(data);
-            sessionStorage.setItem("cv", data);
-            navigate(`../cv/${data}`);
-          }}
-          color="inherit"
-        >
+        <Button onClick={openCv} color="inherit">
           {data}
         </Button>
         <Box>
@@ -112,3 +136,21 @@ export default function CV({ data }) {
     </>
   );
 }
+const styles = {
+  box: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "calc(100% - 20px)",
+    gap: "10px",
+    textAlign: "center",
+    borderTop: "1px solid #eee",
+    borderBottom: "1px solid #eee",
+  },
+
+  checkboxBox: {
+    display: "flex",
+    gap: "10px",
+    alignItems: "center",
+  },
+};

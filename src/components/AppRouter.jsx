@@ -13,6 +13,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import UserDeleted from "../pages/UserDeleted";
 import CurrentCV from "../pages/CurrentCV";
+import NotFound from "../pages/NotFound";
 
 export default function AppRouter() {
   const { isAuth } = useAuth();
@@ -39,6 +40,7 @@ export default function AppRouter() {
           <Route path="/userDeleted" element={<UserDeleted />} />
         </>
       )}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

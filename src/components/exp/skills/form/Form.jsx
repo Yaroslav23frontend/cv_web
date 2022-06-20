@@ -1,10 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";
-import { addCVskills } from "../../../../store/action";
+import CustomButton from "../../../ui/button/CustomButton";
 const validationSchema = yup.object({
   skill: yup
     .string("Entre Skill")
@@ -36,9 +35,9 @@ export default function Form({ func, data = "" }) {
         helperText={formik.touched.skill && formik.errors.skill}
       />
 
-      <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
+      <CustomButton func={formik.handleSubmit}>
         {t("buttons.save")}
-      </Button>
+      </CustomButton>
     </>
   );
 }

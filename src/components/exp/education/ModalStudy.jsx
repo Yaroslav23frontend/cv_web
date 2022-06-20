@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import Form from "./form/Form";
 import { Typography } from "@mui/material";

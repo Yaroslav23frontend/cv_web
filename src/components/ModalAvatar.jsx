@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 import AvatarEditor from "react-avatar-editor";
 import Resizer from "react-image-file-resizer";
 import Slider from "@mui/material/Slider";
+import CustomButton from "./ui/button/CustomButton";
+import SecondaryButton from "./ui/button/SecondaryButton";
 export default function ModalAvatar({
   open,
   handleConfirm,
@@ -135,20 +137,20 @@ export default function ModalAvatar({
               onChange={handleScale}
               valueLabelDisplay="auto"
             />
-            <Button variant="contained" component="label">
+            <CustomButton label={true}>
               Choose Photo
               <input type="file" onChange={handleNewImage} hidden />
-            </Button>
+            </CustomButton>
             <Box sx={styles.boxButtons}>
-              <Button
-                onClick={() => {
+              <SecondaryButton
+                func={() => {
                   saveImage();
                   // handleConfirm(avatar);
                 }}
               >
                 Save
-              </Button>
-              <Button onClick={handleCancele}>Cancele</Button>
+              </SecondaryButton>
+              <SecondaryButton func={handleCancele}>Cancele</SecondaryButton>
             </Box>
           </Box>
         </Box>

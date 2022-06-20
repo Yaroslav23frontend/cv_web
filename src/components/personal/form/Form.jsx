@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import Button from "@mui/material/Button";
+import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import "yup-phone";
+import CustomButton from "../../ui/button/CustomButton";
 export default function Form({ func, data }) {
   const { t } = useTranslation();
   const validationSchema = yup.object({
@@ -196,9 +196,9 @@ export default function Form({ func, data }) {
         error={formik.touched.git && Boolean(formik.errors.git)}
         helperText={formik.touched.git && formik.errors.git}
       />
-      <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
+      <CustomButton func={formik.handleSubmit}>
         {t("buttons.save")}
-      </Button>
+      </CustomButton>
     </>
   );
 }

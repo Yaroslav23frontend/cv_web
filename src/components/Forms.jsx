@@ -12,8 +12,9 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
-import Header from "../pages/Header";
+import Header from "./Header";
 import { useTranslation } from "react-i18next";
+import CustomButton from "./ui/button/CustomButton";
 const validationSchema = yup.object({
   email: yup
     .string("Enter your email")
@@ -102,7 +103,6 @@ export default function Forms({
     validationSchema: validationSchemaSignIn,
     onSubmit: (values) => {
       func(values.email, values.password);
-      alert(JSON.stringify(values, null, 2));
     },
   });
   const formikReset = useFormik({
@@ -129,8 +129,8 @@ export default function Forms({
     return (
       <Paper sx={styles.paper}>
         <Header />
-        <form onSubmit={formik.handleSubmit}>
-          <Typography variant="h4" component="h1" sx={styles.title}>
+        <form>
+          <Typography variant="h5" component="h1" sx={styles.title}>
             {t("auth.signUp.signUp")}
           </Typography>
           <Box sx={styles.inputBox}>
@@ -173,10 +173,10 @@ export default function Forms({
               }
             />
             <Typography sx={styles.error}>{error}</Typography>
-            <Button color="primary" variant="contained" fullWidth type="submit">
+            <CustomButton fullWidth={true} func={formik.handleSubmit}>
               {t("auth.signUp.submit")}
-            </Button>
-            <Button
+            </CustomButton>
+            <CustomButton
               sx={styles.button}
               color="primary"
               variant="contained"
@@ -186,7 +186,7 @@ export default function Forms({
             >
               <GoogleIcon sx={styles.icon}></GoogleIcon>
               {t("auth.signUp.signInWithGoogle")}
-            </Button>
+            </CustomButton>
             <Typography sx={styles.errorGoogle}>{authGoogleError}</Typography>
 
             <Link href="/">{t("auth.signUp.signIn")}</Link>
@@ -199,7 +199,7 @@ export default function Forms({
     return (
       <Paper sx={styles.paper}>
         <Header />
-        <form onSubmit={formikReset.handleSubmit}>
+        <form>
           <Typography variant="h4" component="h1" sx={styles.title}>
             {resetText}
           </Typography>
@@ -217,12 +217,12 @@ export default function Forms({
               helperText={formikReset.touched.email && formikReset.errors.email}
             />
             <Typography sx={styles.error}>{error}</Typography>
-            <Button color="primary" variant="contained" fullWidth type="submit">
+            <CustomButton fullWidth={true} func={formikReset.handleSubmit}>
               {t("auth.forget.submit")}
-            </Button>
-            <Button onClick={() => navigate(-1)}>
+            </CustomButton>
+            <CustomButton fullWidth={true} func={() => navigate(-1)}>
               {t("auth.forget.back")}
-            </Button>
+            </CustomButton>
             {resetEmail ? (
               <></>
             ) : (
@@ -241,7 +241,7 @@ export default function Forms({
     return (
       <Paper sx={styles.paper}>
         <Header />
-        <form onSubmit={formikResetPassword.handleSubmit}>
+        <form>
           <Typography variant="h4" component="h1" sx={styles.title}>
             {t("auth.forget.title")}
           </Typography>
@@ -281,12 +281,15 @@ export default function Forms({
               }
             />
             <Typography sx={styles.error}>{error}</Typography>
-            <Button color="primary" variant="contained" fullWidth type="submit">
+            <CustomButton
+              fullWidth={true}
+              func={formikResetPassword.handleSubmit}
+            >
               {t("auth.forget.submit")}
-            </Button>
-            <Button onClick={() => navigate(-1)}>
+            </CustomButton>
+            <CustomButton fullWidth={true} func={() => navigate(-1)}>
               {t("auth.forget.back")}
-            </Button>
+            </CustomButton>
           </Box>
         </form>
       </Paper>
@@ -295,7 +298,7 @@ export default function Forms({
   return (
     <Paper sx={styles.paper}>
       <Header />
-      <form onSubmit={formikSignIn.handleSubmit}>
+      <form>
         <Typography variant="h4" component="h1" sx={styles.title}>
           {t("auth.signIn.signIn")}
         </Typography>
@@ -343,19 +346,13 @@ export default function Forms({
           ) : (
             <Typography sx={styles.error}>{error}</Typography>
           )}
-          <Button color="primary" variant="contained" fullWidth type="submit">
+          <CustomButton fullWidth={true} func={formikSignIn.handleSubmit}>
             {t("auth.signIn.submit")}
-          </Button>
-          <Button
-            sx={styles.button}
-            color="primary"
-            variant="contained"
-            fullWidth
-            onClick={signInWithGoogle}
-          >
+          </CustomButton>
+          <CustomButton fullWidth={true} func={signInWithGoogle}>
             <GoogleIcon sx={styles.icon}></GoogleIcon>
             {t("auth.signIn.signInWithGoogle")}
-          </Button>
+          </CustomButton>
           <Typography sx={styles.errorGoogle}>{authGoogleError}</Typography>
           <Box sx={styles.linksBox}>
             <Link
@@ -389,8 +386,8 @@ export default function Forms({
 const styles = {
   title: {
     textAlign: "center",
-    marginBottom: "20px",
-    marginTop: "25px",
+    marginBottom: "25px",
+    marginTop: "38px",
   },
 
   paper: {
@@ -425,7 +422,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "20px",
+    gap: "10px",
     width: "100%",
   },
   link: {

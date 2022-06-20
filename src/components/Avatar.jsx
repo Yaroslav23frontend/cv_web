@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { uploadPhotoCVBasicInfo } from "../store/action";
 import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
+import CustomButton from "./ui/button/CustomButton";
 export default function Avatar({ data }) {
   const { t } = useTranslation();
   const [modalAvatar, setModalAvatar] = useState(false);
@@ -25,17 +26,14 @@ export default function Avatar({ data }) {
         <AccountCircleIcon sx={{ width: "100px", height: "100px" }} />
       )}
 
-      <Button
-        sx={styles.button}
-        variant="contained"
-        component="label"
-        onClick={() => {
+      <CustomButton
+        func={() => {
           confirmModalAvatar("");
           setModalAvatar(true);
         }}
       >
         {t("buttons.uploadPhoto")}
-      </Button>
+      </CustomButton>
       <ModalAvatar
         handleConfirm={confirmModalAvatar}
         handleCancele={closeModalAvatar}

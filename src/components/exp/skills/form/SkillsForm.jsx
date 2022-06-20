@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +6,7 @@ import { addCVskills } from "../../../../store/action";
 import Form from "./Form";
 import ModalSkills from "../ModalSkills";
 import update from "../../../../utilites/update";
+import CustomButton from "../../../ui/button/CustomButton";
 export default function SkillsForm({ urlId }) {
   const data = useSelector((state) => state.cvSkills);
   const user = useSelector((state) => state.user.id);
@@ -39,9 +39,7 @@ export default function SkillsForm({ urlId }) {
       {data.length === 0 ? (
         <Form func={saveData} />
       ) : (
-        <Button variant="contained" onClick={openAddModal}>
-          {t("buttons.add")}
-        </Button>
+        <CustomButton func={openAddModal}>{t("buttons.add")}</CustomButton>
       )}
       <ModalSkills
         open={modalAdd}

@@ -65,12 +65,6 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     width: "calc(100% - 20px)",
-    flexWrap: "wrap",
-  },
-  box: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: 1,
   },
   boxDescription: {
     display: "flex",

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Form from "./Form";
 import { useTranslation } from "react-i18next";
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCVlan } from "../../../../store/action";
 import ModalLan from "../ModalLan";
 import update from "../../../../utilites/update";
+import CustomButton from "../../../ui/button/CustomButton";
 export default function LanForm({ urlId }) {
   const data = useSelector((state) => state.cvLan);
   const dispatch = useDispatch();
@@ -40,9 +40,7 @@ export default function LanForm({ urlId }) {
       {data.length === 0 ? (
         <Form func={saveData} />
       ) : (
-        <Button variant="contained" onClick={openAddModal}>
-          Add
-        </Button>
+        <CustomButton func={openAddModal}>Add</CustomButton>
       )}
       <ModalLan
         open={modalAdd}

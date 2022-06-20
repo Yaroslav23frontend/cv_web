@@ -7,7 +7,7 @@ export default function Header() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#1976D2",
+      backgroundColor: "#000",
       color: "#fff",
       position: "absolute",
       width: "100%",
