@@ -15,6 +15,8 @@ import CV from "../components/CV";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
 import AddCV from "../components/AddCV";
+import IconButton from "@mui/material/IconButton";
+import LogoutIcon from "@mui/icons-material/Logout";
 export default function Collection() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -41,12 +43,12 @@ export default function Collection() {
   return (
     <Paper sx={styles.paper}>
       <Box sx={styles.topNav}>
-        <Button onClick={() => navigate("/settings")}>
+        <IconButton onClick={() => navigate("/settings")}>
           <SettingsIcon />
-        </Button>
-        <Button sx={styles.buttonSignOut} onClick={logOut}>
-          {t("buttons.signOut")}
-        </Button>
+        </IconButton>
+        <IconButton sx={styles.buttonSignOut} onClick={logOut}>
+          <LogoutIcon />
+        </IconButton>
       </Box>
 
       {isVerified ? (
@@ -134,7 +136,6 @@ const styles = {
   },
   buttonSignOut: {
     alignSelf: "flex-end",
-    width: "100px",
   },
   boxAddNew: {
     width: "95%",

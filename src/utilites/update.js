@@ -9,13 +9,16 @@ export default async function update(
   edit = false,
   field
 ) {
-  const newData = [
-    ...allData,
-    {
-      ...values,
-      id: id,
-    },
-  ];
+  let newData;
+  if (edit === false) {
+    newData = [
+      ...allData,
+      {
+        ...values,
+        id: id,
+      },
+    ];
+  }
   await updateDoc(doc(db, `${colaction}`, docName), {
     [field]: edit ? allData : newData,
   });

@@ -126,7 +126,8 @@
     "address": "Адреса",
     "zip": "Поштовий індекс",
     "linkedIn": "LinkedIn",
-    "skype": "Skype(invite link)"
+    "skype": "Skype(invite link)",
+    "git": "GitHub"
   },
   "exp_section": {
     "experience": "Досвід",

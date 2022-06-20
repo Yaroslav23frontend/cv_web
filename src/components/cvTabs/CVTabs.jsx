@@ -1,6 +1,9 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useTranslation } from "react-i18next";
+import WorkIcon from "@mui/icons-material/Work";
+import PersonIcon from "@mui/icons-material/Person";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 export default function CVTabs({ active, setTab }) {
   const { t } = useTranslation();
   function handleChangeIndexNav(event, index, id) {
@@ -16,9 +19,9 @@ export default function CVTabs({ active, setTab }) {
       aria-label="secondary tabs example"
       sx={styles.tabs}
     >
-      <Tab value="basic" label={t("cvSection.personal")} />
-      <Tab value="exp" label={t("cvSection.exp")} />
-      <Tab value="pdf" label={t("cvSection.pdf")} />
+      <Tab value="basic" label={<PersonIcon />} />
+      <Tab value="exp" label={<WorkIcon />} />
+      <Tab value="pdf" label={<PictureAsPdfIcon />} />
     </Tabs>
   );
 }

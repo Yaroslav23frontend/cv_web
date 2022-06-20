@@ -10,6 +10,7 @@ import { useAuth } from "../context/AuthContext";
 import { addCV, addItem } from "../store/action";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import { grey } from "@mui/material/colors";
 export default function AddCV() {
   const { t } = useTranslation();
   const user = useSelector((state) => state.user.id);
@@ -104,7 +105,19 @@ export default function AddCV() {
           helperText={formik.touched.item && formik.errors.item}
         />
 
-        <Button variant="outlined" type="submit">
+        <Button
+          variant="outlined"
+          type="submit"
+          sx={{
+            borderColor: grey[900],
+            color: grey[900],
+            "&:hover": {
+              cursor: "pointer",
+              backgroundColor: grey[200],
+              borderColor: grey[600],
+            },
+          }}
+        >
           {t("buttons.add")}
         </Button>
       </Box>

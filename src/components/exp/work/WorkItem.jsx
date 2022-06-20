@@ -135,6 +135,9 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     padding: 1,
+    ["@media (max-width:780px)"]: {
+      flexDirection: "column",
+    },
   },
   boxDescription: {
     padding: 1,

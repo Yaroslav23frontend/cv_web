@@ -4,6 +4,9 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
+import CustomBox from "./CustomBox";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { IconButton } from "@mui/material";
 export default function ModalItem({ open, handleCancele, children }) {
   const { t } = useTranslation();
 
@@ -16,9 +19,13 @@ export default function ModalItem({ open, handleCancele, children }) {
       >
         <Paper sx={styles.paper}>
           <Box sx={styles.topNav}>
-            <Button onClick={handleCancele}>{t("buttons.back")}</Button>
+            <IconButton onClick={handleCancele}>
+              <ArrowBackIcon />
+            </IconButton>
           </Box>
-          {children}
+          <CustomBox maxHeight="calc(100% - 100px)">
+            <Box sx={styles.box}>{children}</Box>
+          </CustomBox>
         </Paper>
       </Modal>
     </div>
@@ -39,7 +46,6 @@ const styles = {
     alignItems: "center",
     overflow: "hidden",
     gap: 2,
-    padding: 2,
   },
   topNav: {
     display: "flex",
@@ -47,6 +53,16 @@ const styles = {
     color: "#eee",
     width: "100%",
     justifyContent: "space-between",
-    marginLeft: -3.5,
+  },
+  box: {
+    width: "calc(100% - 20px)",
+    minHeight: "400px",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 2,
+    padding: 2,
+    marginBottom: 2,
   },
 };

@@ -52,14 +52,25 @@ export default function Form({ func, data = { lan: "", level: "" } }) {
         error={formik.touched.level && Boolean(formik.errors.level)}
         helperText={formik.touched.level && formik.errors.level}
       >
-        <MenuItem value="Beginner">{t("languages_section.basic")}</MenuItem>
-        <MenuItem value="Pre-intermediate">
+        <MenuItem value={t("languages_section.basic")}>
+          {t("languages_section.basic")}
+        </MenuItem>
+        <MenuItem value={t("languages_section.pre")}>
           {t("languages_section.pre")}
         </MenuItem>
-        <MenuItem value="Intermediate">{t("languages_section.inter")}</MenuItem>
-        <MenuItem value="Advanced"> {t("languages_section.adv")}</MenuItem>
-        <MenuItem value="Proficient">{t("languages_section.pro")}</MenuItem>
-        <MenuItem value="Native">{t("languages_section.native")}</MenuItem>
+        <MenuItem value={t("languages_section.inter")}>
+          {t("languages_section.inter")}
+        </MenuItem>
+        <MenuItem value={t("languages_section.adv")}>
+          {" "}
+          {t("languages_section.adv")}
+        </MenuItem>
+        <MenuItem value={t("languages_section.pro")}>
+          {t("languages_section.pro")}
+        </MenuItem>
+        <MenuItem value={t("languages_section.native")}>
+          {t("languages_section.native")}
+        </MenuItem>
       </TextField>
       <Button color="primary" variant="contained" onClick={formik.handleSubmit}>
         {t("buttons.save")}

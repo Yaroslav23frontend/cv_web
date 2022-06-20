@@ -65,6 +65,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     width: "calc(100% - 20px)",
+    flexWrap: "wrap",
   },
   box: {
     display: "flex",
@@ -72,7 +73,10 @@ const styles = {
     padding: 1,
   },
   boxDescription: {
+    display: "flex",
+    flexDirection: "column",
     padding: 1,
+    flexWrap: "wrap",
   },
   boxButtons: {
     alignSelf: "flex-end",

@@ -1,15 +1,19 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { blue } from "@mui/material/colors";
 export default function Container({ children }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <Paper sx={styles.paper}>
       <Box sx={styles.topNav}>
-        <Button onClick={() => navigate("../cv")}>{t("buttons.back")}</Button>
+        <IconButton onClick={() => navigate("../cv")}>
+          <ArrowBackIcon color={blue[500]} />
+        </IconButton>
       </Box>
       {children}
     </Paper>

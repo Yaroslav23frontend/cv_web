@@ -15,6 +15,7 @@ const intialState = {
   city: "",
   linkedIn: "",
   skype: "",
+  git: "",
 };
 export function reducerBasicInfo(state = intialState, action) {
   switch (action.type) {
@@ -30,6 +31,7 @@ export function reducerBasicInfo(state = intialState, action) {
         city: action.payload.city,
         linkedIn: action.payload.linkedIn,
         skype: action.payload.skype,
+        git: action.payload.git,
       };
     case deleteCVBasicInfo:
       return {};

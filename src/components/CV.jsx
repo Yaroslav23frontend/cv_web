@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useActive } from "../context/ActiveContext";
+import IconButton from "@mui/material/IconButton";
 export default function CV({ data }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -86,12 +87,12 @@ export default function CV({ data }) {
           {data}
         </Button>
         <Box>
-          <Button onClick={() => setModal(true)}>
+          <IconButton onClick={() => setModal(true)}>
             <EditIcon />
-          </Button>
-          <Button onClick={() => setDelModal(true)}>
+          </IconButton>
+          <IconButton onClick={() => setDelModal(true)}>
             <DeleteIcon />
-          </Button>
+          </IconButton>
         </Box>
       </Box>
       <CustomModal

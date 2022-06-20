@@ -127,7 +127,8 @@
     "address": "Address",
     "zip": "ZIP",
     "linkedIn": "LinkedIn",
-    "skype": "Skype(invite link)"
+    "skype": "Skype(invite link)",
+    "git": "GitHub"
   },
   "description_section": "Description",
   "work_exp_section": {

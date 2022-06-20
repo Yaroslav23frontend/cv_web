@@ -15,6 +15,10 @@ import { useTranslation } from "react-i18next";
 import ChangeLan from "../components/ChangeLan";
 import i18next from "i18next";
 import CustomBox from "../components/CustomBox";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 export default function Settings({ back }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -26,6 +30,7 @@ export default function Settings({ back }) {
   const [result, setResult] = useState("");
   const data = useSelector((state) => state.boards);
   const settings = useSelector((state) => state.settings);
+
   const [language, setLanguage] = useState(
     document.cookie
       .split(";")
@@ -70,14 +75,14 @@ export default function Settings({ back }) {
 
   return (
     <Paper sx={styles.paper}>
-      <Button
+      <IconButton
         sx={styles.buttonBack}
         onClick={() => {
           navigate(-1);
         }}
       >
-        {t("buttons.back")}
-      </Button>
+        <ArrowBackIcon />
+      </IconButton>
       <CustomBox maxHeight="100%">
         <Box sx={styles.box}>
           <Typography sx={styles.title} variant="h5" component="h1">
@@ -87,27 +92,27 @@ export default function Settings({ back }) {
           <Box sx={styles.box}>
             <Box sx={styles.boxDays}>
               <Typography>{_user.email}</Typography>
-              <Button onClick={() => navigate("/resetEmail")}>
-                {t("buttons.change")}
-              </Button>
+              <IconButton onClick={() => navigate("/resetEmail")}>
+                <EditIcon />
+              </IconButton>
             </Box>
             <Box sx={styles.boxDays}>
               <Typography>{t("settings.password")}</Typography>
-              <Button onClick={() => navigate("/resetPassword")}>
-                {t("buttons.change")}
-              </Button>
+              <IconButton onClick={() => navigate("/resetPassword")}>
+                <EditIcon />
+              </IconButton>
             </Box>
             <Box sx={styles.boxDays}>
               <Typography>{t("settings.deleteAccount")}</Typography>
-              <Button onClick={() => setModal(true)}>
-                {t("buttons.delete")}
-              </Button>
+              <IconButton onClick={() => setModal(true)}>
+                <DeleteIcon />
+              </IconButton>
             </Box>
             <Box sx={styles.boxDays}>
               <Typography>{t("settings.deleteAllData")}</Typography>
-              <Button onClick={() => setModalDeleteAll(true)}>
-                {t("buttons.delete")}
-              </Button>
+              <IconButton onClick={() => setModalDeleteAll(true)}>
+                <DeleteIcon />
+              </IconButton>
             </Box>
             <ChangeLan
               id="lan"
@@ -161,7 +166,7 @@ const styles = {
   boxDays: {
     display: "flex",
     justifyContent: "flex-start",
-    alignItems: "baseline",
+    alignItems: "center",
     gap: "20px",
   },
   textField: {
