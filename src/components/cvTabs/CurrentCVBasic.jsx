@@ -15,7 +15,7 @@ export default function CurrentCVBasic({ id, next }) {
       </Typography>
 
       <CustomBox>
-        <Avatar data={data} />
+        <Avatar urlId={id} data={data} />
         <Personal urlId={id} />
       </CustomBox>
       <SecondaryButton func={() => next("exp")}>

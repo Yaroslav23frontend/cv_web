@@ -2,20 +2,24 @@ import React, { useEffect, useState, useRef } from "react";
 import Button from "@mui/material/Button";
 import ModalAvatar from "./ModalAvatar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uploadPhotoCVBasicInfo } from "../store/action";
 import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
 import CustomButton from "./ui/button/CustomButton";
-export default function Avatar({ data }) {
+import update from "../utilites/update";
+export default function Avatar({ urlId, data }) {
   const { t } = useTranslation();
   const [modalAvatar, setModalAvatar] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.id);
   function closeModalAvatar() {
     setModalAvatar(false);
   }
   function confirmModalAvatar(img) {
     dispatch({ type: uploadPhotoCVBasicInfo, payload: img });
+    const newData = { ...data, photo: img };
+    update(user, urlId, "", "", newData, true, "cvBasicInfo");
     setModalAvatar(false);
   }
   return (
