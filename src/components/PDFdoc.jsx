@@ -303,7 +303,7 @@ export default function PDFdoc({ data, bg }) {
                 return (
                   <View>
                     <Text style={[styles.personalP, styles.span]}>
-                      {el.language}
+                      {el.lan}
                     </Text>
                     <Text style={styles.personalP}>{el.level}</Text>
                   </View>
