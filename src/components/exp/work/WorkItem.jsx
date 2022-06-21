@@ -89,11 +89,13 @@ export default function WorkItem({ data, id, urlId }) {
               </Typography>
             </Box>
           </Box>
-          <Typography>
-            {`${data.stringStart} ${
-              data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
-            }`}
-          </Typography>
+          <Box sx={styles.dateText}>
+            <Typography>
+              {`${data.stringStart} ${
+                data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
+              }`}
+            </Typography>
+          </Box>
         </Box>
         {data.description !== "" ? (
           <Box sx={styles.boxDescription}>
@@ -144,5 +146,11 @@ const styles = {
   },
   boxButtons: {
     alignSelf: "flex-end",
+  },
+  dateText: {
+    ["@media (max-width:828px)"]: {
+      display: "flex",
+      justifyContent: "flex-start",
+    },
   },
 };
