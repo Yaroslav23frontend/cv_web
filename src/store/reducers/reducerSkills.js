@@ -21,7 +21,8 @@ export function reducerSkills(state = [], action) {
     case deleteCVskills:
       return [...state.filter((el) => el.id !== action.payload)];
     case uploadCVskills:
-      return action.payload;
+      const uploadData = action.payload.map((el) => el);
+      return uploadData;
     default:
       return state;
   }

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 export default function Skills({ urlId }) {
   const { t } = useTranslation();
   const data = useSelector((state) => state.cvSkills);
+  console.log(data);
   return (
     <Box sx={styles.box}>
       <Typography
@@ -17,7 +18,7 @@ export default function Skills({ urlId }) {
       >
         {t("skills.h")}
       </Typography>
-      {data?.map((el, id) => (
+      {data.map((el, id) => (
         <SkillItem key={`skill-${el.id}`} data={el} id={id} urlId={urlId} />
       ))}
       <SkillsForm urlId={urlId} />

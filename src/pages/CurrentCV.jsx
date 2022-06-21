@@ -51,6 +51,7 @@ export default function CurrentCV() {
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
       const uploadData = docSnap.data();
+      console.log(uploadData.cvSkills);
       dispatch({ type: uploadCVBasicInfo, payload: uploadData.cvBasicInfo });
       dispatch({
         type: addCVdescription,

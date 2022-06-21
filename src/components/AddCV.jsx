@@ -14,8 +14,7 @@ import { grey } from "@mui/material/colors";
 export default function AddCV() {
   const { t } = useTranslation();
   const user = useSelector((state) => state.user.id);
-  const data = useSelector((state) => state.collection);
-  console.log(data);
+  const dataCollection = useSelector((state) => state.collection);
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
   async function addNewItem(data) {
@@ -23,19 +22,36 @@ export default function AddCV() {
       type: addCV,
       payload: data.item,
     });
+    storeData(data.item);
   }
-  async function storeData() {
+  async function storeData(data) {
     console.log(data);
-    await setDoc(doc(db, `${user}`, data[data.length - 1]), {});
+    await setDoc(doc(db, `${user}`, data), {
+      cvBasicInfo: {
+        photo: "",
+        name: "",
+        lastName: "",
+        email: "",
+        tel: "",
+        address: "",
+        zip: "",
+        city: "",
+        linkedIn: "",
+        skype: "",
+        git: "",
+      },
+      cvWork: [],
+      cvDescription: "",
+      cvStudy: [],
+      cvSkills: [],
+      cvLan: [],
+      cvBg: "",
+    });
     await setDoc(doc(db, `${user}-collection`, "collection"), {
-      collection: [...data],
+      collection: [...dataCollection, data],
     });
   }
-  useEffect(() => {
-    if (count !== 0) {
-      storeData();
-    }
-  }, [count]);
+
   const styles = {
     inputAddItem: {
       width: "calc(100% - 300px)",
