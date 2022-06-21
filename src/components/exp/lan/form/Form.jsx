@@ -5,16 +5,16 @@ import TextField from "@mui/material/TextField";
 import { MenuItem } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../../ui/button/CustomButton";
-const validationSchema = yup.object({
-  lan: yup
-    .string("Entre Language")
-    .max(100, "Max length 100 symbols")
-    .required("Enter Language"),
-  level: yup.string("Entre level").required("Enter level"),
-});
 
 export default function Form({ func, data = { lan: "", level: "" } }) {
   const { t } = useTranslation();
+  const validationSchema = yup.object({
+    lan: yup
+      .string()
+      .max(100, t("languages_section.error.lan.max"))
+      .required(t("languages_section.error.lan.required")),
+    level: yup.string().required(t("languages_section.error.level.required")),
+  });
   const formik = useFormik({
     initialValues: {
       lan: data.lan,

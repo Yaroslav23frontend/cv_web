@@ -107,7 +107,7 @@ export default function CV({ data }) {
   return (
     <>
       <Box sx={styles.box}>
-        <Button onClick={openCv} color="inherit">
+        <Button sx={styles.cvName} onClick={openCv} color="inherit">
           {data}
         </Button>
         <Box>
@@ -152,5 +152,9 @@ const styles = {
     display: "flex",
     gap: "10px",
     alignItems: "center",
+  },
+  cvName: {
+    display: "flex",
+    justifyContent: "flex-start",
   },
 };

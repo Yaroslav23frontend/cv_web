@@ -13,6 +13,12 @@ const validationSchema = yup.object({
 
 export default function Form({ func, data = "" }) {
   const { t } = useTranslation();
+  const validationSchema = yup.object({
+    skill: yup
+      .string()
+      .max(100, t("skills.error.max"))
+      .required(t("skills.error.required")),
+  });
   const formik = useFormik({
     initialValues: {
       skill: data.skill,

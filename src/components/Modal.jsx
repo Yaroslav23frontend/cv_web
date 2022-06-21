@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import SecondaryButton from "./ui/button/SecondaryButton";
+import { Typography } from "@mui/material";
 export default function CustomModal({
   open,
   handleConfirm,
@@ -179,7 +180,7 @@ export default function CustomModal({
         aria-describedby="parent-modal-description"
       >
         <Box sx={styles.box}>
-          <p id="parent-modal-description">{massege}</p>
+          <Typography id="parent-modal-description">{massege}</Typography>
           <Box sx={styles.boxButtons}>
             <SecondaryButton func={handleConfirm}>
               {t("buttons.delete")}
@@ -207,6 +208,11 @@ const styles = {
     px: 4,
     pb: 3,
     textAlign: "center",
+    minHeight: "120px",
+    display: "flex",
+    gap: "15px",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   boxButtons: {
     display: "flex",

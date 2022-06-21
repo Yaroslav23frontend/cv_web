@@ -5,28 +5,6 @@ import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../../ui/button/CustomButton";
 
-const validationSchema = yup.object({
-  title: yup
-    .string("Entre your title")
-    .max(100, "Max length 100 symbols")
-    .required("Enter your title"),
-  company: yup
-    .string("Enter company name")
-    .max(100, "Max length 100 symbols")
-    .required("Enter your title"),
-  city: yup
-    .string()
-    .matches(
-      /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
-      "The city name is invalid"
-    ),
-  start: yup.date("Enter your task").required("Please choose the date"),
-  end: yup.date("Enter your task"),
-  description: yup
-    .string("Entre your description")
-    .max(1000, "Max length 1000 symbols"),
-});
-
 export default function Form({
   data = {
     title: "",
@@ -40,6 +18,27 @@ export default function Form({
   func,
 }) {
   const { t } = useTranslation();
+  const validationSchema = yup.object({
+    title: yup
+      .string()
+      .max(100, t("work_exp_section.error.title.max"))
+      .required(t("work_exp_section.error.title.required")),
+    company: yup
+      .string()
+      .max(150, t("work_exp_section.error.company.max"))
+      .required(t("work_exp_section.error.company.required")),
+    city: yup
+      .string()
+      .matches(
+        /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
+        t("work_exp_section.error.location.matches")
+      ),
+    start: yup.date().required(t("work_exp_section.error.start.required")),
+    end: yup.date(),
+    description: yup
+      .string("Entre your description")
+      .max(1000, t("work_exp_section.error.description.max")),
+  });
   const formik = useFormik({
     initialValues: {
       title: data.title,

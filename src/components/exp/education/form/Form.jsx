@@ -4,28 +4,6 @@ import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../../ui/button/CustomButton";
 
-const validationSchema = yup.object({
-  studies: yup
-    .string("Entre your title")
-    .max(150, "Max length 150 symbols")
-    .required("Enter your title"),
-  location: yup
-    .string()
-    .matches(
-      /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
-      "The city name is invalid"
-    ),
-  insitution: yup
-    .string("Entre insitution")
-    .max(150, "Max length 150 symbols")
-    .required("Entre insitution"),
-  start: yup.date("Enter your task").required("Please choose the date"),
-  end: yup.date("Enter your task"),
-  description: yup
-    .string("Entre your description")
-    .max(1000, "Max length 1000 symbols"),
-});
-
 export default function Form({
   func,
   data = {
@@ -38,6 +16,27 @@ export default function Form({
   },
 }) {
   const { t } = useTranslation();
+  const validationSchema = yup.object({
+    studies: yup
+      .string()
+      .max(150, t("study_section.error.studies.max"))
+      .required(t("study_section.error.studies.required")),
+    location: yup
+      .string()
+      .matches(
+        /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
+        t("study_section.error.location.matches")
+      ),
+    insitution: yup
+      .string()
+      .max(150, t("study_section.error.institution.matches"))
+      .required(t("study_section.error.institution.required")),
+    start: yup.date().required(t("study_section.error.start.required")),
+    end: yup.date(),
+    description: yup
+      .string("Entre your description")
+      .max(1000, t("study_section.error.description.max")),
+  });
   const formik = useFormik({
     initialValues: {
       studies: data.studies,

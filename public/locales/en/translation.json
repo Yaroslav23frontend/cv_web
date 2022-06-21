@@ -111,7 +111,8 @@
   },
   "messagesCollection": {
     "noCV": "You don't have any CV yet",
-    "offline": "Please check your internet connection"
+    "offline": "Please check your internet connection",
+    "notFound": "Not found"
   },
   "cvSection": {
     "personal": "Personal",
@@ -128,9 +129,48 @@
     "zip": "ZIP",
     "linkedIn": "LinkedIn",
     "skype": "Skype",
-    "git": "GitHub"
+    "git": "GitHub",
+    "error": {
+      "name": {
+        "min": "Name should be of minimum 2 characters length",
+        "max": "Name should be of max 32 characters length",
+        "required": "Name is required"
+      },
+      "lastName": {
+        "min": "Last Name should be of minimum 2 characters length",
+        "max": "Last Name should be of max 32 characters length",
+        "required": "Last Name is required"
+      },
+      "email": {
+        "email": "Enter a valid email",
+        "required": "Email is required"
+      },
+      "tel": {
+        "required": "Phone number is required"
+      },
+      "city": { "matches": "The city name is invalid" },
+      "zip": { "matches": "Zip code must be 5 characters" },
+      "linkedIn": {
+        "url": "Must be url",
+        "matches": "The link must reach your profile on LinkedIn"
+      },
+      "skype": {
+        "url": "Must be url",
+        "matches": "The link should be invite to Skype"
+      },
+      "git": {
+        "url": "Must be url",
+        "matches": "The link must reach your profile on GitHub"
+      }
+    }
   },
-  "description_section": "Description",
+  "description_section": {
+    "h": "Description",
+    "error": {
+      "max": "Max length 1000 symbols",
+      "required": "Enter Description"
+    }
+  },
   "work_exp_section": {
     "h": "Work Experience",
     "title": "Title/Position",
@@ -138,7 +178,26 @@
     "company": "Company",
     "start_date": "Start date",
     "end_date": "End date",
-    "description": "Description"
+    "description": "Description",
+    "error": {
+      "title": {
+        "max": "Max length 150 symbols",
+        "required": "Enter title"
+      },
+      "city": {
+        "matches": "The city name is invalid"
+      },
+      "company": {
+        "max": "Max length 150 symbols",
+        "required": "Enter company name"
+      },
+      "start": {
+        "required": "Enter start date"
+      },
+      "description": {
+        "max": "Max length 1000 symbols"
+      }
+    }
   },
   "study_section": {
     "h": "Studies and certificates",
@@ -147,12 +206,35 @@
     "insitution": "Institution/Center",
     "start_date": "Start date",
     "end_date": "End date",
-    "description": "Description"
+    "description": "Description",
+    "error": {
+      "studies": {
+        "max": "Max length 150 symbols",
+        "required": "Enter studies"
+      },
+      "location": {
+        "matches": "The city name is invalid"
+      },
+      "institution": {
+        "max": "Max length 150 symbols",
+        "required": "Enter institution"
+      },
+      "start": {
+        "required": "Enter start date"
+      },
+      "description": {
+        "max": "Max length 1000 symbols"
+      }
+    }
   },
 
   "skills": {
     "h": "Skills",
-    "skill": "Skill"
+    "skill": "Skill",
+    "error": {
+      "max": "Max length 100 symbols",
+      "required": "Enter Skill"
+    }
   },
   "edit": "Edit",
   "description": "Description",
@@ -165,6 +247,15 @@
     "upper": "Upper-intermediate",
     "adv": "Advanced",
     "pro": "Proficient",
-    "basic": "Beginner"
+    "basic": "Beginner",
+    "error": {
+      "lan": {
+        "max": "Max length 100 symbols",
+        "required": "Enter Language"
+      },
+      "level": {
+        "required": "Enter level"
+      }
+    }
   }
 }

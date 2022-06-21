@@ -14,7 +14,7 @@ export default function Description({ urlId }) {
         sx={styles.title}
         fontWeight="bold"
       >
-        {t("description")}
+        {t("description_section.h")}
       </Typography>
       <DescriptionItem urlId={urlId} />
       <DescriptionForm urlId={urlId} />

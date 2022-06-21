@@ -9,55 +9,47 @@ export default function Form({ func, data }) {
   const { t } = useTranslation();
   const validationSchema = yup.object({
     name: yup
-      .string("Enter your name")
-      .min(1, "Name should be of minimum 2 characters length")
-      .max(32, "Name should be of max 32 characters length")
-      .required("Name is required"),
+      .string()
+      .min(1, t("cvPersonal.error.name.min"))
+      .max(32, t("cvPersonal.error.name.max"))
+      .required(t("cvPersonal.error.name.required")),
     lastName: yup
-      .string("Enter your last name")
-      .min(1, "Name should be of minimum 2 characters length")
-      .max(32, "Name should be of max 32 characters length")
-      .required("Name is required"),
+      .string()
+      .min(1, t("cvPersonal.error.lastName.min"))
+      .max(32, t("cvPersonal.error.lastName.max"))
+      .required(t("cvPersonal.error.lastName.required")),
     email: yup
-      .string("Enter your email")
-      .email("Enter a valid email")
-      .required("Email is required"),
-    tel: yup
-      .string("Enter your phone number")
-      .phone()
-      .required("Phone number is required"),
+      .string()
+      .email(t("cvPersonal.error.email.email"))
+      .required(t("cvPersonal.error.email.required")),
+    tel: yup.string().phone().required(t("cvPersonal.error.tel.required")),
     city: yup
       .string()
       .matches(
         /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
-        "The city name is invalid"
+        t("cvPersonal.error.city.matches")
       ),
-    address: yup.string("Enter your city"),
-    zip: yup
-      .string("Enter your zip code")
-      .matches(/^[0-9]{5}?$/, "The zip code should be 5 numbers in length"),
+    address: yup.string(),
+    zip: yup.string().matches(/^[0-9]{5}?$/, t("cvPersonal.error.zip.matches")),
 
     linkedIn: yup
       .string("Enter link to profile")
-      .url("Must be url")
+      .url(t("cvPersonal.error.linkedIn.url"))
       .matches(
         /^https:\/\/www.linkedin.com\//,
-        "The link must reach your profile on LinkedIn"
+        t("cvPersonal.error.linkedIn.matches")
       ),
     skype: yup
       .string()
-      .url("Must be url")
+      .url(t("cvPersonal.error.skype.url"))
       .matches(
         /^https:\/\/join.skype.com\/invite\//,
-        "The link should be invite to Skype"
+        t("cvPersonal.error.skype.matches")
       ),
     git: yup
-      .string("Enter link to profile")
-      .url("Must be url")
-      .matches(
-        /^https:\/\/github.com\//,
-        "The link must reach your profile on GitHub"
-      ),
+      .string()
+      .url(t("cvPersonal.error.git.url"))
+      .matches(/^https:\/\/github.com\//, t("cvPersonal.error.git.matches")),
   });
 
   const formik = useFormik({

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
-import { Button, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import BackspaceIcon from "@mui/icons-material/Backspace";
 import Paper from "@mui/material/Paper";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
@@ -65,9 +66,9 @@ export default function Collection() {
             InputProps={{
               endAdornment:
                 searchData !== "" ? (
-                  <Button onClick={() => setSearchData("")}>
-                    {t("buttons.clear")}
-                  </Button>
+                  <IconButton onClick={() => setSearchData("")}>
+                    <BackspaceIcon />
+                  </IconButton>
                 ) : (
                   ""
                 ),
@@ -79,9 +80,16 @@ export default function Collection() {
               <CircularProgress />
             ) : (
               <>
-                {data.length === 0 ? (
+                {data.length === 0 && collection.length === 0 ? (
                   <Typography sx={styles.text} variant="h6" component="h2">
                     {t("messagesCollection.noCV")}
+                  </Typography>
+                ) : (
+                  <></>
+                )}
+                {data.length === 0 ? (
+                  <Typography sx={styles.text} variant="h6" component="h2">
+                    {t("messagesCollection.notFound")}
                   </Typography>
                 ) : (
                   <></>

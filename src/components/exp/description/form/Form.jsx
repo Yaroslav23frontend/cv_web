@@ -10,15 +10,15 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { addCVdescription } from "../../../../store/action";
 import CustomButton from "../../../ui/button/CustomButton";
-const validationSchema = yup.object({
-  description: yup
-    .string("Entre your description")
-    .max(1000, "Max length 1000 symbols")
-    .required("Enter description"),
-});
 
 export default function Form({ func, data = "" }) {
   const { t } = useTranslation();
+  const validationSchema = yup.object({
+    description: yup
+      .string()
+      .max(1000, t("description_section.error.max"))
+      .required(t("description_section.error.required")),
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -36,7 +36,7 @@ export default function Form({ func, data = "" }) {
         fullWidth
         id="description"
         name="description"
-        label={t("description")}
+        label={t("description_section.h")}
         value={formik.values.description}
         onChange={formik.handleChange}
         multiline
