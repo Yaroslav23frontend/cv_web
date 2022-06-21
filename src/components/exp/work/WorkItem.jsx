@@ -63,7 +63,7 @@ export default function WorkItem({ data, id, urlId }) {
     <>
       <Paper sx={styles.paper}>
         <Box sx={styles.box}>
-          <Box>
+          <Box sx={{ textAlign: "left" }}>
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">

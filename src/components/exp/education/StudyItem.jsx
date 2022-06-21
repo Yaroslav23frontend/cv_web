@@ -58,7 +58,7 @@ export default function StudyItem({ data, id, urlId }) {
     <>
       <Paper sx={styles.paper}>
         <Box sx={styles.box}>
-          <Box>
+          <Box sx={{ alignSelf: "flex-start", textAlign: "left" }}>
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">

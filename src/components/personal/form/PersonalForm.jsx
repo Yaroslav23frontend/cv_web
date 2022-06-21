@@ -22,7 +22,7 @@ export default function PersonalForm({ urlId }) {
       git: values.git,
     };
     dispatch({ type: addCVBasicInfo, payload: newData });
-    update(user, urlId, "", "", [newData], true, "cvBasicInfo");
+    update(user, urlId, "", "", newData, true, "cvBasicInfo");
   }
   return (
     <>
