@@ -58,7 +58,7 @@ export default function StudyItem({ data, id, urlId }) {
     <>
       <Paper sx={styles.paper}>
         <Box sx={styles.box}>
-          <Box sx={{ alignSelf: "flex-start", textAlign: "left" }}>
+          <Box sx={{ textAlign: "left" }}>
             <Box>
               <Typography>
                 <Typography fontWeight="bold" component="span">
@@ -84,11 +84,13 @@ export default function StudyItem({ data, id, urlId }) {
               </Typography>
             </Box>
           </Box>
-          <Typography>
-            {`${data.stringStart} ${
-              data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
-            }`}
-          </Typography>
+          <Box sx={styles.dateText}>
+            <Typography>
+              {`${data.stringStart} ${
+                data.stringEnd !== "" ? `- ${data.stringEnd}` : ""
+              }`}
+            </Typography>
+          </Box>
         </Box>
         {data.description !== "" ? (
           <Box sx={styles.boxDescription}>
@@ -133,6 +135,8 @@ const styles = {
     padding: 1,
     ["@media (max-width:780px)"]: {
       flexDirection: "column",
+      alignContent: "flex-start",
+      justifyContent: "flex-start",
     },
   },
   boxDescription: {
@@ -140,5 +144,11 @@ const styles = {
   },
   boxButtons: {
     alignSelf: "flex-end",
+  },
+  dateText: {
+    ["@media (max-width:828px)"]: {
+      display: "flex",
+      justifyContent: "flex-start",
+    },
   },
 };

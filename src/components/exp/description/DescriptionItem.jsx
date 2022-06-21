@@ -38,7 +38,9 @@ export default function DescriptionItem({ urlId }) {
     return (
       <Paper sx={styles.paper}>
         <Box sx={styles.boxDescription}>
-          <Typography fontWeight="bold">{t("description")}</Typography>
+          <Typography fontWeight="bold">
+            {t("description_section.h")}
+          </Typography>
           <Typography>{data}</Typography>
         </Box>
         <Box sx={styles.boxButtons}>
