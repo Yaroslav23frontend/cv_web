@@ -99,8 +99,8 @@ export default function Collection() {
           </Box>
 
           <CustomBox>
-            {data.map((el) => {
-              return <CV key={el} data={el} />;
+            {data.map((el, id) => {
+              return <CV key={el} data={el} idItem={id} />;
             })}
           </CustomBox>
 

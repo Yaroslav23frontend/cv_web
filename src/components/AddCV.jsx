@@ -77,12 +77,13 @@ export default function AddCV() {
   };
   const validationSchema = yup.object({
     item: yup
-      .string("Enter your password")
+      .string()
       .min(1, "Item should be  minimum 1 character length")
-      .max(
-        50,
-        "The item should be less than 50 or equal to 50 characters in length"
+      .matches(
+        /^\w[a-zA-Z@#\-\_0-9.]*$/,
+        "The name should not consist any of white spaces"
       )
+      .max(50, "Max length 50 characters")
       .required("Item should be minimum 1 character length"),
   });
   const formik = useFormik({

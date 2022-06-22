@@ -24,7 +24,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useActive } from "../context/ActiveContext";
 import IconButton from "@mui/material/IconButton";
 import { grey } from "@mui/material/colors";
-export default function CV({ data }) {
+export default function CV({ data, idItem }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,7 +47,8 @@ export default function CV({ data }) {
     setDelModal(false);
   }
   async function renameCV(docName) {
-    const result = [...collection.filter((el) => el !== data), docName];
+    const result = JSON.parse(JSON.stringify(collection));
+    result[idItem] = docName;
     dispatch({ type: addCVs, payload: result });
     const docSnap = await getDoc(doc(db, `${id}`, data));
     if (docSnap.exists()) {
