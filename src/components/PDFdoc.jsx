@@ -387,8 +387,8 @@ export default function PDFdoc({ data, bg }) {
               if (el !== "") {
                 return (
                   <Link
-                    key={`linkedIn-${Date.now()}`}
-                    src={basicInfo.linkedIn}
+                    key={`git-${Date.now()}`}
+                    src={basicInfo.git}
                     style={{
                       marginRight: "5px",
                       marginLeft: "5px",
