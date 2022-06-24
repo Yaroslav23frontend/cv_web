@@ -33,7 +33,7 @@ export default function AppRouter() {
                 <Route path="/resetEmail" element={<ResetEmail />} />
                 <Route path="/resetPassword" element={<ResetPassword />} />
                 <Route exact path="/cv/:id" element={<CurrentCV />} />
-                {/* <Route path="*" element={<Navigate to="/cv" />} /> */}
+                <Route path="*" element={<Navigate to="/cv" />} />
               </>
             ) : (
               <>
