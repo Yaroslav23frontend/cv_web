@@ -171,6 +171,38 @@
       "required": "Enter Description"
     }
   },
+  "position_section": {
+    "h": "Position",
+    "error": {
+      "max": "Max length 100 symbols",
+      "required": "Enter Position"
+    }
+  },
+  "projects_section": {
+    "h": "Projects",
+    "title": "Project name",
+    "description": "Description",
+    "technologies": "Technologies",
+    "technology": "Technology",
+    "git": "GitHub",
+    "link": "Link",
+    "error": {
+      "title": {
+        "max": "Max length 150 symbols",
+        "required": "Enter title"
+      },
+      "description": {
+        "max": "Max length 1000 symbols"
+      },
+      "git": {
+        "url": "Must be url",
+        "matches": "The link must reach your profile on GitHub"
+      },
+      "link": {
+        "url": "Must be url"
+      }
+    }
+  },
   "work_exp_section": {
     "h": "Work Experience",
     "title": "Title/Position",
@@ -238,6 +270,7 @@
   },
   "edit": "Edit",
   "description": "Description",
+  "position": "Position",
   "languages_section": {
     "h": "Language",
     "level": "Level",

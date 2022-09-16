@@ -18,8 +18,12 @@ export default async function update(
         id: id,
       },
     ];
+    console.log(newData);
   }
-  await updateDoc(doc(db, `${colaction}`, docName), {
+  console.log(
+    `colaction:${colaction}, docName:${docName}, values:${values}, id:${id}, allData:${allData}, field:${field}, newData:${newData}`
+  );
+  await updateDoc(doc(db, `${colaction}`, `${docName}`), {
     [field]: edit ? allData : newData,
   });
 }

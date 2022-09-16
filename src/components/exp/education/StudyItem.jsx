@@ -128,6 +128,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     width: "calc(100% - 20px)",
+    textAlign: "left",
   },
   box: {
     display: "flex",
@@ -141,6 +142,8 @@ const styles = {
   },
   boxDescription: {
     padding: 1,
+    alignSelf: "flex-start",
+    marginBlockStart: 0,
   },
   boxButtons: {
     alignSelf: "flex-end",

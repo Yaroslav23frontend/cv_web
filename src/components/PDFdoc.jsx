@@ -84,6 +84,25 @@ export default function PDFdoc({ data, bg }) {
     span: {
       fontWeight: "bold",
     },
+    position: {
+      marginTop: "10px",
+    },
+    projectLinksView: {
+      display: "flex",
+      flexDirection: "row",
+      marginTop: "10px",
+    },
+    projectLink: {
+      marginRight: "10px",
+    },
+    technology: {
+      border: "1px solid black",
+      borderRadius: "10px",
+      display: "flex",
+      fontSize: "12px",
+      padding: "5px 10px",
+      marginRight: "10px",
+    },
   });
 
   const avatar = [basicInfo.photo];
@@ -94,9 +113,10 @@ export default function PDFdoc({ data, bg }) {
   const address = [basicInfo.address];
   const postal = [basicInfo.zip];
   const description = [data.cvDescription];
-
+  const position = [data.cvPosition];
+  const projects = [data.cvProjects];
   const { t } = useTranslation();
-
+  console.log(projects);
   const CV = (
     <Document>
       <Page size="A4" style={styles.page} wrap>
@@ -437,10 +457,13 @@ export default function PDFdoc({ data, bg }) {
           <Text style={styles.h1}>
             {`${basicInfo.name} ${basicInfo.lastName}`}
           </Text>
+          <Text style={[styles.p, styles.span, styles.position]}>
+            {position}
+          </Text>
           <View
             style={{
               width: "100%",
-              height: "20px",
+              height: "10px",
               backgroundColor: "#fff",
               position: "relative",
             }}
@@ -487,6 +510,54 @@ export default function PDFdoc({ data, bg }) {
                   el.stringEnd !== "" ? `- ${el.stringEnd}` : ""
                 }`}</Text>
                 <Text style={styles.p}>{el.description}</Text>
+              </>
+            );
+          })}
+          {[data.cvProjects].map((el, id) => {
+            if (el.length !== 0) {
+              return (
+                <View key={`study-${id}`}>
+                  <Svg
+                    style={{
+                      margin: "20px 0",
+                    }}
+                    width="100%"
+                    height={1}
+                  >
+                    <Line
+                      x1="0"
+                      y1="0"
+                      x2="450"
+                      y2="0"
+                      strokeWidth={1}
+                      stroke="grey"
+                    />
+                  </Svg>
+                  <Text style={[styles.h2, styles.mainH2]}>
+                    {t("projects_section.h")}
+                  </Text>
+                </View>
+              );
+            }
+          })}
+          {data.cvProjects.map((el) => {
+            return (
+              <>
+                <Text style={[styles.h2, styles.span]}>{el.title}</Text>
+                <Text style={styles.p}>{el.description}</Text>
+                <View style={styles.projectLinksView}>
+                  {el.technologies.map((el) => {
+                    return <Text style={[styles.technology]}>{el}</Text>;
+                  })}
+                </View>
+                <View style={styles.projectLinksView}>
+                  <Link style={[styles.p, styles.projectLink]} src={el.git}>
+                    GitHub
+                  </Link>
+                  <Link style={[styles.p, styles.projectLink]} src={el.link}>
+                    Live
+                  </Link>
+                </View>
               </>
             );
           })}

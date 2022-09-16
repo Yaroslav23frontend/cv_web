@@ -10,6 +10,8 @@ import { reducerWork } from "./reducers/reducerWork";
 import { reducerSkills } from "./reducers/reducerSkills";
 import { reducerLan } from "./reducers/reducerLan";
 import { reducerCVbg } from "./reducers/reducerCVbg";
+import { reducerPosition } from "./reducers/reducerPostion";
+import { reducerProjects } from "./reducers/reducerProjects";
 export const store = configureStore({
   reducer: {
     user: reducerUserInfo,
@@ -23,6 +25,8 @@ export const store = configureStore({
     cvSkills: reducerSkills,
     cvLan: reducerLan,
     cvBg: reducerCVbg,
+    cvPosition: reducerPosition,
+    cvProjects: reducerProjects,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

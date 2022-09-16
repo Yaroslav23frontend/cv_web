@@ -7,6 +7,8 @@ import Skills from "../exp/skills/Skills";
 import Lan from "../exp/lan/Lan";
 import { useTranslation } from "react-i18next";
 import SecondaryButton from "../ui/button/SecondaryButton";
+import Position from "../exp/position/Position";
+import Projects from "../exp/projects/Projects";
 export default function CurrentCVExperience({ id, next }) {
   const { t } = useTranslation();
   return (
@@ -15,10 +17,12 @@ export default function CurrentCVExperience({ id, next }) {
         {t("cvSection.exp")}
       </Typography>
       <CustomBox>
+        <Position urlId={id} />
         <Description urlId={id} />
         <Work urlId={id} />
         <Study urlId={id} />
         <Skills urlId={id} />
+        <Projects urlId={id} />
         <Lan urlId={id} />
       </CustomBox>
       <SecondaryButton

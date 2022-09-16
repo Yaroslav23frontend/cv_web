@@ -17,6 +17,9 @@ import {
   uploadCVskills,
   uploadCVlan,
   changeCVbg,
+  addCVPosition,
+  addCVProject,
+  uploadCVProject,
 } from "../store/action";
 import { Typography } from "@mui/material";
 export default function CurrentCV() {
@@ -56,6 +59,14 @@ export default function CurrentCV() {
       dispatch({
         type: addCVdescription,
         payload: uploadData.cvDescription,
+      });
+      dispatch({
+        type: addCVPosition,
+        payload: uploadData.cvPosition,
+      });
+      dispatch({
+        type: uploadCVProject,
+        payload: uploadData.cvProjects,
       });
       dispatch({
         type: uploadCVstudy,

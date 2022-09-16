@@ -19,7 +19,7 @@ export default function CVTabs({ active, setTab }) {
       aria-label="secondary tabs example"
       sx={styles.tabs}
     >
-      <Tab value="basic" label={<PersonIcon />} />
+      <Tab sx={{ border: 0 }} value="basic" label={<PersonIcon />} />
       <Tab value="exp" label={<WorkIcon />} />
       <Tab value="pdf" label={<PictureAsPdfIcon />} />
     </Tabs>
@@ -32,5 +32,6 @@ const styles = {
     display: "flex",
     padding: "5px",
     justifyContent: "center",
+    border: 0,
   },
 };
