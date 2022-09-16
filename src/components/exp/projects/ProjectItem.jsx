@@ -76,7 +76,7 @@ export default function ProjectItem({ data, id, urlId }) {
         <Box sx={styles.technologiesBox}>
           {data.link && (
             <Link href={data.link}>
-              <Typography>Live</Typography>
+              <Typography>Demo</Typography>
             </Link>
           )}
           {data.git && (

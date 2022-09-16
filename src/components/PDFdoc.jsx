@@ -555,7 +555,7 @@ export default function PDFdoc({ data, bg }) {
                     GitHub
                   </Link>
                   <Link style={[styles.p, styles.projectLink]} src={el.link}>
-                    Live
+                    Demo
                   </Link>
                 </View>
               </>
