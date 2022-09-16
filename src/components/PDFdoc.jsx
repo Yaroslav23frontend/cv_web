@@ -53,7 +53,7 @@ export default function PDFdoc({ data, bg }) {
       fontFamily: "Liberation Sans",
       fontWeight: "bold",
       fontSize: "15px",
-      margin: "10px 0",
+      marginBottom: "10px",
     },
     p: {
       fontFamily: "Liberation Sans",
@@ -90,7 +90,8 @@ export default function PDFdoc({ data, bg }) {
     projectLinksView: {
       display: "flex",
       flexDirection: "row",
-      marginTop: "10px",
+      marginTop: "5px",
+      flexWrap: "wrap",
     },
     projectLink: {
       marginRight: "10px",
@@ -102,6 +103,10 @@ export default function PDFdoc({ data, bg }) {
       fontSize: "12px",
       padding: "5px 10px",
       marginRight: "10px",
+      marginBottom: "10px",
+    },
+    tachnologyMarginBottom: {
+      marginBottom: "10px",
     },
   });
 
@@ -259,7 +264,7 @@ export default function PDFdoc({ data, bg }) {
                 return (
                   <Svg
                     style={{
-                      margin: "20px 0",
+                      margin: "10px 0",
                     }}
                     width="100%"
                     height={4}
@@ -297,7 +302,7 @@ export default function PDFdoc({ data, bg }) {
                     <View>
                       <Svg
                         style={{
-                          margin: "20px 0",
+                          margin: "10px 0",
                         }}
                         width={150}
                         height={4}
@@ -448,7 +453,7 @@ export default function PDFdoc({ data, bg }) {
         >
           <View
             style={{
-              height: "20px",
+              height: "10px",
               width: "100%",
               backgroundColor: "#fff",
             }}
@@ -478,7 +483,7 @@ export default function PDFdoc({ data, bg }) {
                 <View key={`study-${id}`}>
                   <Svg
                     style={{
-                      margin: "20px 0",
+                      margin: "10px 0",
                     }}
                     width="100%"
                     height={1}
@@ -519,7 +524,7 @@ export default function PDFdoc({ data, bg }) {
                 <View key={`study-${id}`}>
                   <Svg
                     style={{
-                      margin: "20px 0",
+                      margin: "10px 0",
                     }}
                     width="100%"
                     height={1}
@@ -542,7 +547,7 @@ export default function PDFdoc({ data, bg }) {
           })}
           {data.cvProjects.map((el) => {
             return (
-              <>
+              <View style={styles.tachnologyMarginBottom}>
                 <Text style={[styles.h2, styles.span]}>{el.title}</Text>
                 <Text style={styles.p}>{el.description}</Text>
                 <View style={styles.projectLinksView}>
@@ -558,7 +563,7 @@ export default function PDFdoc({ data, bg }) {
                     Demo
                   </Link>
                 </View>
-              </>
+              </View>
             );
           })}
           {[data.cvWork].map((el, id) => {
@@ -567,7 +572,7 @@ export default function PDFdoc({ data, bg }) {
                 <View key={`work-${id}`}>
                   <Svg
                     style={{
-                      margin: "20px 0",
+                      margin: "10px 0",
                     }}
                     width="100%"
                     height={1}
@@ -603,7 +608,7 @@ export default function PDFdoc({ data, bg }) {
           })}
           <View
             style={{
-              height: "20px",
+              height: "10px",
               width: "100%",
               backgroundColor: "#fff",
               position: "relative",
