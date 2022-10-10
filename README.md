@@ -1,6 +1,6 @@
 <h1>CV builder</h1>
 <h2>Description</h2> 
-<p>Simple application for creating a resume</p>
+<p>This app was built using React.js and is hosted on Netlify. Users are able to create CVs and help themselves to get a new job. User authentication is available, so you can sign up & sign in to your account with your email and password, or you can just authenticate with your Gmail account. All user data is stored on Firebase.</p>
 <h2>Technologies</h2>
 <ul>
 <li>HTML</li>
