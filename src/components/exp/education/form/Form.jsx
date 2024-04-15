@@ -24,7 +24,7 @@ export default function Form({
     location: yup
       .string()
       .matches(
-        /^(?:[A-Z]{1,}[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-[A-Z]{1,1}\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
+        /^(?:[A-ZА-ЯҐЄІЇ]{1,}[A-Za-zА-Яа-яґєії]{2,}(?:(\.\s|'s\s|\s?-[A-ZА-ЯҐЄІЇ]{1,1}\s?|\s)?(?=[A-Za-zА-Яа-яґєії]+))){1,2}(?:[A-Za-zА-Яа-яґєії]+)?$/,
         t("study_section.error.location.matches")
       ),
     insitution: yup
